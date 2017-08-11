@@ -1,0 +1,67 @@
+/********************************
+ * @file  tables
+ ********************************/
+@import './define.styl'
+
+//table
+table
+  width 100%
+  border 0
+  background $color_white
+  thead
+    th
+      background $color_table_header
+      padding 12px
+      vertical-align middle
+      border-bottom none
+      text-align left
+      color #5e6d82
+      font-size 14px
+      white-space nowrap
+      &:first-child
+        padding-left 10px
+      &.sort
+        position relative
+        cursor pointer
+      .icon
+        display inline-block
+        position absolute
+        right 8px
+        top 38%
+        cursor pointer
+  tbody
+  //border-bottom 1px solid #f4f8fb
+    tr
+      td
+        padding 13px 20px
+        border-top none
+        text-align left
+        color #5e6d82
+        font-size 14px
+        font-weight 400
+        &:first-child
+          padding-left 10px
+        &.blue
+          color $color_blue
+          cursor pointer
+        &.disabled
+          color $color_font_default
+        .pl
+          padding-left 10px
+      &:nth-child(odd)
+        background $color_white
+      &:nth-child(even)
+        background #f4f8fb
+    &:last-child
+      border-bottom 1px solid #eaeefb
+.table-noData-tips
+  .tips
+    margin auto
+    width 150px
+    padding-top 150px
+    background-position center center
+    text-align center
+    font-size 16px
+    color $color_default_gray
+    margin-top 5px
+    margin-bottom 15px

@@ -1,0 +1,37 @@
+/********************************
+ * @file  公共样式
+ ********************************/
+@import './define.styl'
+
+.page-component
+  h3
+    font-weight 400
+    color #1f2f3d
+    margin: 45px 0 15px
+  p
+    font-size 14px
+    color #5e6d82
+    line-height 30px
+.panel
+  position relative
+  margin-bottom 20px
+  background $color_white
+  clear-fix()
+  .panel-title
+    height 45px
+    line-height 45px
+    border-bottom 1px solid $color_border_inner
+    .title
+      display inline-block
+      font-size 18px
+      padding 0 15px
+      height inherit
+      cursor pointer
+      color $color_default_gray
+      &:hover, &.active
+        border-bottom  2px solid $color_dark_blue
+        color $color_default_black
+.direct-up
+   color #b73712 !important
+.direct-down
+   color #427f0c !important

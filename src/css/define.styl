@@ -1,0 +1,89 @@
+/********************************
+ * @file  全局变量
+ ********************************/
+
+//主色
+$color_light_blue = #58B7FF
+$color_blue = #20A0FF
+$color_dark_blue = #1D8CE0
+
+//辅助色-提示／警告
+$color_success = #13CE66
+$color_warning = #F7BA2A
+$color_danger = #FF4949
+
+//中性色-用于文本、背景和边框颜色
+$color_black = #1F2D3D
+$color_light_black = #324057
+$color_extra_light_black = #475669
+$color_sliver = #8492A6
+$color_light_sliver = #99A9BF
+$color_extra_light_sliver = #C0CCDA
+$color_gray = #D3DCE6
+$color_light_gray = #E5E9F2
+$color_extra_light_gray = #EFF2F7
+$color_dark_white = #F9FAFC
+$color_white = #FFFFFF
+
+//分割线
+$color_border_inner = #eeeeee
+
+//字体颜色
+$color_default_black = #333333 //标题和正文，默认黑色
+$color_light_black = #666666 //浅灰色
+$color_default_gray = #999999 //时间和无效文字
+
+$color_table_header = #e7f3fc //table表头
+
+$img_path = "../../assets/images/" //普通图片路径
+$icon_path = "../../assets/icons/" //图标路径
+
+//转换成rem单位
+rem(value, base = $base-font-size)
+  if $debug == true
+    unit(value * 1, 'px')
+  else
+    unit(value /base * 1rem, 'rem')
+
+//设置图标背景，默认no-repeat
+set-icon-bg(icon)
+  background url($icon_path + icon) no-repeat
+
+//设置图片背景，默认no-repeat
+set-image-bg(image)
+  background url($img_path + image) no-repeat
+
+//设置图片背景和背景色，默认no-repeat
+set-image-bg-color(color, image)
+  background color url($img_path + image) no-repeat
+
+// 设置图片背景, 同时指定元素大小
+set-image(width, height, image)
+  width width
+  height height
+  background-size width height
+  background-repeat no-repeat
+  background-image url($img_path + image)
+
+// 设置图标, 同时指定元素大小
+set-icon(width, height, image)
+  width width
+  height height
+  background-size width height
+  background-repeat no-repeat
+  background-image url($icon_path + image)
+
+//应用按钮特征，比如样式可点击
+as-button()
+  -webkit-tap-highlight-color transparent
+  outline none
+  user-select none
+  cursor pointer
+
+clear-fix()
+  &:after
+    content " "
+    display block
+    height 0
+    clear both
+    visibility hidden

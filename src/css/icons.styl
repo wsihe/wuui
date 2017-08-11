@@ -1,0 +1,21 @@
+/**
+ * 此文件定义icon图标样式, 这些icon图标将会被编译合成sprite图标。
+ * 规则1: 只能是小图标, 超过100*100的图标不适合在这里声明
+ * 规则2: 样式只能规定图标width、height、background、background-size这些属性,
+ *					其他属性应该例如top、right等应在具体应用中声明
+ * 规则3: 样式名称对应asset/icons目录下的icon文件名称, 比如.icon-arrow-right对应的图片一定是asset/icons/icon-arrow-right.png
+ * 规则4: 需要重复的图片不能在这里定义,
+ */
+@import './define.styl'
+
+i
+  display inline-block
+
+.icon
+  display block
+  background-size initial
+
+
+
+
+
