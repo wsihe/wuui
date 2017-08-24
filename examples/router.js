@@ -1,18 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import index from '@/pages/index'
-import guide from '@/pages/guide'
-import component from '@/pages/component'
+import index from '@/index'
 
 Vue.use(Router)
 
-// const breadcrumb = r => require.ensure([], () => r(require('@/docs/zh-CN/breadcrumb.md')), 'breadcrumb')
-const design = r => require.ensure([], () => r(require('@/docs/zh-CN/design')), 'design')
-const contribution = r => require.ensure([], () => r(require('@/docs/zh-CN/contribution')), 'contribution')
-
-const introduce = r => require.ensure([], () => r(require('@/docs/zh-CN/introduce')), 'introduce')
-const installMd = r => require.ensure([], () => r(require('@/docs/zh-CN/install')), 'installMd')
-const usageMd = r => require.ensure([], () => r(require('@/docs/zh-CN/usage')), 'usageMd')
 const colorMd = r => require.ensure([], () => r(require('@/docs/zh-CN/color')), 'colorMd')
 const buttonMd = r => require.ensure([], () => r(require('@/docs/zh-CN/button')), 'buttonMd')
 const switchMd = r => require.ensure([], () => r(require('@/docs/zh-CN/switch')), 'switchMd')
@@ -24,55 +15,9 @@ const router = new Router({
   routes:
   [{
     path: '/index',
-    name: 'index',
-    component: index
-  },
-  {
-    path: '/guide',
-    redirect: '/guide/design',
-    component: guide,
+    redirect: '/index/color',
+    component: index,
     children: [
-      {
-        path: 'design',
-        name: 'guide-design',
-        component: design
-      },
-      {
-        path: 'contribution',
-        name: 'guide-contribution',
-        component: contribution
-      }
-    ]
-  },
-  {
-    path: '/component',
-    redirect: '/component/introduce',
-    component: component,
-    children: [
-      {
-        path: 'introduce',
-        name: 'component-introduce',
-        meta: {
-          title: 'Introduce'
-        },
-        component: introduce
-      },
-      {
-        path: 'install',
-        name: 'component-install',
-        meta: {
-          title: '安装'
-        },
-        component: installMd
-      },
-      {
-        path: 'usage',
-        name: 'component-usage',
-        meta: {
-          title: '使用'
-        },
-        component: usageMd
-      },
       {
         path: 'color',
         name: 'component-color',

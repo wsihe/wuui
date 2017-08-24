@@ -3,30 +3,21 @@
     .header-navbar
       .header-navbar__logo
         a.logo(href='javascript:void(0)')
-      .header-navbar__collapse
-        .header-navbar__search
-           .select-box 搜索组件...
       .header-lang 中文
       ul.header-nav
-        li.header-nav__item(v-for="nav in navList")
-          router-link(active-class="active", :to='nav.path') {{nav.name}}
+        li.header-nav__item
+          router-link(active-class="active", to='/index') 组件演示
 </template>
 
 <script>
-  import navConfig from '@/i18n/main.nav.json'
   export default {
     data () {
       return {
-        navList: []
       }
     },
     created () {
-      this.handleTitleData(navConfig)
     },
     methods: {
-      handleTitleData (data) {
-        this.navList = data['zh-CN']
-      }
     }
   }
 </script>

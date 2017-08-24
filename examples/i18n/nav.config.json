@@ -4,26 +4,6 @@
   "index": null,
   "menuItem": [
     {
-      "icon": "icon-start",
-      "label": "快速开始",
-      "url": null,
-      "index": null,
-      "menuItem": [
-        {
-          "label": "安装",
-          "url": "install",
-          "index": null,
-          "menuItem": null
-        },
-        {
-          "label": "使用",
-          "url": "usage",
-          "index": null,
-          "menuItem": null
-        }
-      ]
-    },
-    {
       "icon": "icon-basic",
       "label": "Basic",
       "url": null,
