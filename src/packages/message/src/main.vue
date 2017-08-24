@@ -34,7 +34,7 @@
 
     computed: {
       typeImg () {
-        return require(`./assets/${this.type}.svg`)
+        return require(`../assets/${this.type}.svg`)
       }
     },
 
