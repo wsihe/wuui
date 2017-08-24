@@ -1,0 +1,23 @@
+{
+  "zh-CN": [
+    {
+      "path": "design",
+      "name": "设计原则"
+    },
+    {
+      "path": "contribution",
+      "name": "参与贡献"
+    }
+  ],
+  "en-US": [
+    {
+      "path": "design",
+      "name": "Design"
+    },
+    {
+      "path": "contribution",
+      "name": "Contribution"
+    }
+  ]
+}
+

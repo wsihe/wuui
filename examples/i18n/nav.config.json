@@ -1,0 +1,165 @@
+{
+  "label": "Wuui",
+  "url": null,
+  "index": null,
+  "menuItem": [
+    {
+      "icon": "icon-start",
+      "label": "快速开始",
+      "url": null,
+      "index": null,
+      "menuItem": [
+        {
+          "label": "安装",
+          "url": "install",
+          "index": null,
+          "menuItem": null
+        },
+        {
+          "label": "使用",
+          "url": "usage",
+          "index": null,
+          "menuItem": null
+        }
+      ]
+    },
+    {
+      "icon": "icon-basic",
+      "label": "Basic",
+      "url": null,
+      "index": null,
+      "menuItem": [
+        {
+          "label": "Color 色彩",
+          "url": "color",
+          "index": null,
+          "menuItem": null
+        },
+        {
+          "label": "Button 按钮",
+          "url": "button",
+          "index": null,
+          "menuItem": null
+        }
+      ]
+    },
+    {
+      "icon": "icon-form",
+      "label": "Form",
+      "url": null,
+      "index": null,
+      "menuItem": [
+        {
+          "label": "Input 输入框",
+          "url": "input",
+          "index": null,
+          "menuItem": null
+        },
+        {
+          "label": "Select 选择",
+          "url": "select",
+          "index": null,
+          "menuItem": null
+        },
+        {
+          "label": "Switch 开关",
+          "url": "switch",
+          "index": null,
+          "menuItem": null
+        },
+        {
+          "label": "DatePicker 日期选择",
+          "url": "date-picker",
+          "index": null,
+          "menuItem": null
+        }
+      ]
+    },
+    {
+      "icon": "icon-data",
+      "label": "Data",
+      "url": null,
+      "index": null,
+      "menuItem": [
+        {
+          "label": "Pagination 分页",
+          "url": "pagination",
+          "index": null,
+          "menuItem": null
+        }
+      ]
+    },
+    {
+      "icon": "icon-notice",
+      "label": "Notice",
+      "url": null,
+      "index": null,
+      "menuItem": [
+        {
+          "label": "Message 消息",
+          "url": "message",
+          "index": null,
+          "menuItem": null
+        },
+        {
+          "label": "MessageBox 弹框",
+          "url": "message-box",
+          "index": null,
+          "menuItem": null
+        }
+      ]
+    },
+    {
+      "icon": "icon-navigation",
+      "label": "Navigation",
+      "url": null,
+      "index": null,
+      "menuItem": [
+        {
+          "label": "Steps 步骤条",
+          "url": "steps",
+          "index": null,
+          "menuItem": null
+        },
+        {
+          "label": "Dropdown 下拉菜单",
+          "url": "dropdown",
+          "index": null,
+          "menuItem": null
+        },
+        {
+          "label": "Tabs 标签页",
+          "url": "tabs",
+          "index": null,
+          "menuItem": null
+        }
+      ]
+    },
+    {
+      "icon": "icon-other",
+      "label": "Others",
+      "url": null,
+      "index": null,
+      "menuItem": [
+        {
+          "label": "Tooltip 文字提示",
+          "url": "tooltip",
+          "index": null,
+          "menuItem": null
+        },
+        {
+          "label": "Popover 弹出框",
+          "url": "popover",
+          "index": null,
+          "menuItem": null
+        },
+        {
+          "label": "Collapse 折叠面板",
+          "url": "collapse",
+          "index": null,
+          "menuItem": null
+        }
+      ]
+    }
+  ]
+}

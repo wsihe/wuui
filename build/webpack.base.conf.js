@@ -3,6 +3,12 @@ var webpack = require('webpack')
 var utils = require('./utils')
 var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
+var json = require('json-loader');
+
+var markdown = require('markdown-it')({
+  html: true,
+  breaks: true
+})
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -10,7 +16,7 @@ function resolve (dir) {
 
 module.exports = {
   entry: {
-    app: './src/main.js'
+    app: './examples/main.js'
   },
   output: {
     path: config.build.assetsRoot,
@@ -20,13 +26,13 @@ module.exports = {
       : config.dev.assetsPublicPath
   },
   resolve: {
-    extensions: ['.js', '.vue', '.json','.styl'],
+    extensions: ['.js', '.vue', '.json','.styl','.md'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src'),
-      'assets': resolve('src/assets'),
-      'components': resolve('src/components'),
-      'services': resolve('src/services'),
+      '@': resolve('examples'),
+      'assets': resolve('examples/assets'),
+      'components': resolve('examples/components'),
+      'services': resolve('examples/services'),
     }
   },
   module: {
@@ -35,8 +41,8 @@ module.exports = {
         test: /\.(js|vue)$/,
         loader: 'eslint-loader',
         enforce: 'pre',
-        exclude: [resolve('src/libs')],
-        include: [resolve('src'), resolve('test')],
+        exclude: [resolve('examples/libs')],
+        include: [resolve('examples'), resolve('test')],
         options: {
           formatter: require('eslint-friendly-formatter')
         }
@@ -49,7 +55,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('test')]
+        include: [resolve('examples'), resolve('test')]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -66,6 +72,15 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
+      },
+      {
+        test: /\.json$/,
+        loader: 'json-loader'
+      },
+      {
+        test: /\.md$/,
+        loader: 'vue-markdown-loader',
+        options: markdown
       }
     ]
   },

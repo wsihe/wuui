@@ -1,0 +1,30 @@
+{
+  "zh-CN": [
+    {
+      "path": "/index",
+      "name": "首页"
+    },
+    {
+      "path": "/guide",
+      "name": "指南"
+    },
+    {
+      "path": "/component",
+      "name": "组件"
+    }
+  ],
+  "en-US": [
+    {
+      "path": "/index",
+      "name": "Home"
+    },
+    {
+      "path": "/guide",
+      "name": "Guidelines"
+    },
+    {
+      "path": "/component",
+      "name": "Components"
+    }
+  ]
+}
