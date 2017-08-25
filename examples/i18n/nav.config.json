@@ -1,143 +1,106 @@
 {
-  "label": "Wuui",
-  "url": null,
-  "index": null,
+  "name": "Wuui",
+  "path": null,
   "menuItem": [
     {
       "icon": "icon-basic",
-      "label": "Basic",
-      "url": null,
-      "index": null,
+      "name": "Basic",
+      "path": null,
       "menuItem": [
         {
-          "label": "Color 色彩",
-          "url": "color",
-          "index": null,
-          "menuItem": null
+          "name": "Color 色彩",
+          "path": "color"
         },
         {
-          "label": "Button 按钮",
-          "url": "button",
-          "index": null,
-          "menuItem": null
+          "name": "Button 按钮",
+          "path": "button"
         }
       ]
     },
     {
       "icon": "icon-form",
-      "label": "Form",
-      "url": null,
-      "index": null,
+      "name": "Form",
+      "path": null,
       "menuItem": [
         {
-          "label": "Input 输入框",
-          "url": "input",
-          "index": null,
-          "menuItem": null
+          "name": "Input 输入框",
+          "path": "input"
         },
         {
-          "label": "Select 选择",
-          "url": "select",
-          "index": null,
-          "menuItem": null
+          "name": "Select 选择",
+          "path": "select"
         },
         {
-          "label": "Switch 开关",
-          "url": "switch",
-          "index": null,
-          "menuItem": null
+          "name": "Switch 开关",
+          "path": "switch"
         },
         {
-          "label": "DatePicker 日期选择",
-          "url": "date-picker",
-          "index": null,
-          "menuItem": null
+          "name": "DatePicker 日期选择",
+          "path": "date-picker"
         }
       ]
     },
     {
       "icon": "icon-data",
-      "label": "Data",
-      "url": null,
-      "index": null,
+      "name": "Data",
+      "path": null,
       "menuItem": [
         {
-          "label": "Pagination 分页",
-          "url": "pagination",
-          "index": null,
-          "menuItem": null
+          "name": "Pagination 分页",
+          "path": "pagination"
         }
       ]
     },
     {
       "icon": "icon-notice",
-      "label": "Notice",
-      "url": null,
-      "index": null,
+      "name": "Notice",
+      "path": null,
       "menuItem": [
         {
-          "label": "Message 消息",
-          "url": "message",
-          "index": null,
-          "menuItem": null
+          "name": "Message 消息",
+          "path": "message"
         },
         {
-          "label": "MessageBox 弹框",
-          "url": "message-box",
-          "index": null,
-          "menuItem": null
+          "name": "MessageBox 弹框",
+          "path": "message-box"
         }
       ]
     },
     {
       "icon": "icon-navigation",
-      "label": "Navigation",
-      "url": null,
-      "index": null,
+      "name": "Navigation",
+      "path": null,
       "menuItem": [
         {
-          "label": "Steps 步骤条",
-          "url": "steps",
-          "index": null,
-          "menuItem": null
+          "name": "Steps 步骤条",
+          "path": "steps"
         },
         {
-          "label": "Dropdown 下拉菜单",
-          "url": "dropdown",
-          "index": null,
-          "menuItem": null
+          "name": "Dropdown 下拉菜单",
+          "path": "dropdown"
         },
         {
-          "label": "Tabs 标签页",
-          "url": "tabs",
-          "index": null,
-          "menuItem": null
+          "name": "Tabs 标签页",
+          "path": "tabs"
         }
       ]
     },
     {
       "icon": "icon-other",
-      "label": "Others",
-      "url": null,
-      "index": null,
+      "name": "Others",
+      "path": null,
       "menuItem": [
         {
-          "label": "Tooltip 文字提示",
-          "url": "tooltip",
-          "index": null,
-          "menuItem": null
+          "name": "Tooltip 文字提示",
+          "path": "tooltip"
         },
         {
-          "label": "Popover 弹出框",
-          "url": "popover",
-          "index": null,
-          "menuItem": null
+          "name": "Popover 弹出框",
+          "path": "popover"
         },
         {
-          "label": "Collapse 折叠面板",
-          "url": "collapse",
-          "index": null,
-          "menuItem": null
+          "name": "Collapse 折叠面板",
+          "path": "collapse"
         }
       ]
     }

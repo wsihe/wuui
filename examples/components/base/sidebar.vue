@@ -8,59 +8,35 @@
           i.iconfont.icon-expand
         ul.menu(v-show="!menu.active")
           li.menu__list(v-for="childMenu in menu.children")
-            router-link(active-class="active", :to='childMenu.url'  tag="span" exact) {{childMenu.name}}
+            router-link(active-class="active", :to='childMenu.path'  tag="span" exact) {{childMenu.name}}
   </template>
 
 <script>
   import navList from '@/i18n/nav.config.json'
-  import {firstLowerCase} from '@/common/utils'
 
   export default {
     data () {
       return {
         show: false,
-        isEmpty: false,
-        menuList: [],
-        activeIndex: -1
+        menuList: []
       }
     },
     mounted () {
       this.handleMenuData(navList)
     },
     methods: {
-      showMenu () {
-        this.show = !this.show
-        this.menuList.forEach(function (firstMenu) {
-          firstMenu.active = false
-        })
-      },
-      focus (menu) {
-        menu.active = !menu.active
-      },
       handleMenuData (ret) {
         if (!ret || !ret.menuItem || !ret.menuItem.length) {
-          this.isEmpty = true
           return
         }
         var menuList = this.buildMenuTree(ret.menuItem, null)
         this.menuList = menuList
-        this.isEmpty = menuList.length === 0
-        this.activeIndex = -1
       },
-      onMenuClick (menu, index, parent) {
+
+      onMenuClick (menu, index) {
         if (!menu.leaf) {
-          if (this.activeIndex === index) {
-            menu.active = !menu.active
-            if (!menu.active) {
-              this.activeIndex = -1
-            }
-          } else {
-            menu.active = true
-            this.activeIndex = index
-          }
-          return
+          menu.active = !menu.active
         }
-        menu.active = true
         this.inactiveSubMenu(menu)
       },
 
@@ -74,7 +50,7 @@
         })
       },
 
-      buildMenuTree (itemList, parent) {
+      buildMenuTree (itemList) {
         let _this = this
         if (!itemList || !itemList.length) {
           return []
@@ -82,11 +58,9 @@
         var list = []
         itemList.forEach(function (item) {
           var menu = {}
-          menu.parentId = parent ? parent.id : null
-          menu.name = item.label
-          menu.url = firstLowerCase(item.url)
+          menu.name = item.name
+          menu.path = item.path
           menu.icon = item.icon || 'icon-menu-default'
-          menu.level = parent ? parent.level + 1 : 1
           menu.active = false
           menu.children = _this.buildMenuTree(item.menuItem, menu)
           menu.leaf = menu.children.length === 0
