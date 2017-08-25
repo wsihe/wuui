@@ -13,7 +13,6 @@
 
 <script>
   import navList from '@/i18n/nav.config.json'
-
   export default {
     data () {
       return {
@@ -37,17 +36,6 @@
         if (!menu.leaf) {
           menu.active = !menu.active
         }
-        this.inactiveSubMenu(menu)
-      },
-
-      inactiveSubMenu (menu) {
-        this.menuList.forEach(function (firstMenu) {
-          firstMenu.children.forEach(function (childMenu) {
-            if (childMenu !== menu) {
-              childMenu.active = false
-            }
-          })
-        })
       },
 
       buildMenuTree (itemList) {
