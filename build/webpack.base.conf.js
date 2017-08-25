@@ -5,10 +5,6 @@ var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
 var json = require('json-loader');
 
-var markdown = require('markdown-it')({
-  html: true,
-  breaks: true
-})
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -76,11 +72,6 @@ module.exports = {
       {
         test: /\.json$/,
         loader: 'json-loader'
-      },
-      {
-        test: /\.md$/,
-        loader: 'vue-markdown-loader',
-        options: markdown
       }
     ]
   },
