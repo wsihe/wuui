@@ -24,11 +24,11 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.vue', '.json','.styl','.less'],
     alias: {
+      'wuui': path.resolve(__dirname, '../src'),
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('examples'),
       'assets': resolve('examples/assets'),
       'components': resolve('examples/components'),
-      'services': resolve('examples/services'),
     }
   },
   module: {
@@ -74,12 +74,5 @@ module.exports = {
         loader: 'json-loader'
       }
     ]
-  },
-  plugins: [
-    new webpack.optimize.CommonsChunkPlugin('common.js'),
-    new webpack.ProvidePlugin({
-      jQuery: "jquery",
-      $: "jquery"
-    })
-  ]
+  }
 }
