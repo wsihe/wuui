@@ -68,7 +68,6 @@
     .sidebar-expand
       position relative
       top 0
-      width 200px
       .sidebar__item_nav
         position absolute
         top 0

@@ -2,11 +2,12 @@
   .main
     main-nav
     .main__content.clearfix
-      side-bar(v-on:data="inactive")
-      .main__container
-        .page
-          .content
-             router-view
+      wu-row
+        wu-col(:span="4")
+          side-bar(v-on:data="inactive")
+        wu-col(:span="20")
+          .main__container
+            router-view
     main-footer
 </template>
 
@@ -71,20 +72,11 @@
           font-weight 200
     .sidebar
       display block
-      float left
-      width 200px
+      border-right 1px solid #e9e9e9
     .main__container
       display block
-      margin-left 200px
-      padding 0 0 120px
-      margin-left -1px
       min-height 500px
       overflow hidden
-      border-left 1px solid #e9e9e9
-    .router-fade-enter-active, .router-fade-leave-active
-      transition opacity .3s
-    .router-fade-enter, .router-fade-leave-active
-      opacity 0
   footer
     clear both
     font-size 12px
