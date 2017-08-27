@@ -51,12 +51,23 @@ export default {
       })
       let classList = Object.assign({}, classA, sizeClassObj)
       return classList
+    },
+    style () {
+      let style = {}
+      let gutter = this.$parent.gutter
+      if (gutter && gutter > 0) {
+        style = {
+          paddingLeft: `${gutter / 2}px`,
+          paddingRight: `${gutter / 2}px`
+        }
+      }
+      return style
     }
   },
 
   render (h) {
     return (
-      <div class={this.classes}>
+      <div class={this.classes} style={this.style}>
         {this.$slots.default}
       </div>
     )

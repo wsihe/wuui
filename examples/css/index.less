@@ -1,0 +1,17 @@
+/* LESS mixin error with (optional) argument @borderWidth which defaults to 2px if not specified */
+.error(@borderWidth: 2px) {
+  border: @borderWidth solid #F00;
+  color: #F00;
+}
+
+.generic-error {
+  padding: 20px;
+  margin: 4px;
+  .error(); /* Applies styles from mixin error */
+}
+.login-error {
+  left: 12px;
+  position: absolute;
+  top: 20px;
+  .error(5px); /* Applies styles from mixin error with argument @borderWidth equal to 5px */
+}

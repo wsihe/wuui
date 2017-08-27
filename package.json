@@ -64,6 +64,8 @@
     "style-loader": "",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
+    "less": "",
+    "less-loader": "",
     "url-loader": "^0.5.7",
     "vue-loader": "^11.1.4",
     "vue-markdown-loader": "^2.0.0",
