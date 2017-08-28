@@ -2,6 +2,7 @@ import './style/index.less'
 import Row from './packages/row'
 import Col from './packages/col'
 import Message from './packages/message'
+import Icon from './packages/icon'
 // import Input from '../packages/input/index.js'
 // import Switch from '../packages/switch/index.js'
 // import Pagination from '../packages/pagination/index.js'
@@ -15,7 +16,6 @@ import Message from './packages/message'
 // import TabPane from '../packages/tab-pane/index.js'
 // import Alert from '../packages/alert/index.js'
 // import Loading from '../packages/loading/index.js'
-// import Icon from '../packages/icon/index.js'
 // import Steps from '../packages/steps/index.js'
 // import Step from '../packages/step/index.js'
 // import Collapse from '../packages/collapse/index.js'
@@ -25,7 +25,8 @@ import Message from './packages/message'
 
 const components = [
   Row,
-  Col
+  Col,
+  Icon
   // Pagination,
   // Input,
   // Switch,
@@ -94,7 +95,8 @@ export default {
   // Notification,
   // Icon,
   Message,
-  install
+  install,
+  Icon
   // Steps,
   // Step,
   // Collapse,

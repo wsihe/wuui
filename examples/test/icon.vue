@@ -1,6 +1,7 @@
 <template lang="pug">
-  .page-message
-    | 111
+  .page
+    .demo-content
+      icon(type="link")
 </template>
 
 <script>
