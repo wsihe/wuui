@@ -1,14 +1,29 @@
 {
   "name": "wuui",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A Vue.js 2.0 UI Toolkit for Web",
   "author": "river <wusihe@aliyun.com>",
-  "private": true,
-  "scripts": {
-    "dev": "node build/dev-server.js",
-    "build": "node build/build.js",
-    "lint": "eslint --ext .js,.vue src"
+  "homepage": "http://wuui.github.io/",
+  "keywords": [
+    "ant",
+    "design",
+    "vue",
+    "vue-component",
+    "component",
+    "components",
+    "ui",
+    "framework",
+    "frontend"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wsihe/wuui"
   },
+  "bugs": {
+    "url": "https://github.com/wsihe/wuui/issues"
+  },
+  "main": "dist/wuui.js",
+  "license": "MIT",
   "dependencies": {
     "vue": "^2.2.2",
     "vue-router": "^2.2.0",
@@ -70,6 +85,11 @@
     "webpack-dev-middleware": "^1.10.0",
     "webpack-hot-middleware": "^2.16.1",
     "webpack-merge": "^2.6.1"
+  },
+  "scripts": {
+    "dev": "node build/dev-server.js",
+    "build": "node build/build.js",
+    "lint": "eslint --ext .js,.vue src"
   },
   "engines": {
     "node": ">= 4.0.0",

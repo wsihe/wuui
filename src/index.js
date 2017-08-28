@@ -1,3 +1,4 @@
+import './style/index.less'
 import Row from './packages/row'
 import Col from './packages/col'
 import Message from './packages/message'
