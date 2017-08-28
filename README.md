@@ -1,6 +1,6 @@
 <p align="center">
     <a href="http://wuui.github.io/">
-        <img width="200" src="https://static.oschina.net/uploads/img/201708/28104817_vh7A.png">
+        <img width="200" src="https://github.com/wsihe/wuui/blob/master/examples/assets/logo_wuui.png">
     </a>
 </p>
 
