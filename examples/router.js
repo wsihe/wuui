@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import index from '@/index'
 import grid from '@/test/grid'
 import icon from '@/test/icon'
-import color from '@/test/color'
+import button from '@/test/button'
 import message from '@/test/message'
 import collapse from '@/test/collapse'
 
@@ -27,9 +27,9 @@ const router = new Router({
         component: icon
       },
       {
-        path: 'color',
-        name: 'component-color',
-        component: color
+        path: 'button',
+        name: 'component-button',
+        component: button
       },
       {
         path: 'collapse',

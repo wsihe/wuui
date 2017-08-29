@@ -16,10 +16,6 @@
           "path": "icon"
         },
         {
-          "name": "Color 色彩",
-          "path": "color"
-        },
-        {
           "name": "Button 按钮",
           "path": "button"
         }

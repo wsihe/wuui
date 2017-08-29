@@ -3,6 +3,8 @@ import Row from './packages/row'
 import Col from './packages/col'
 import Message from './packages/message'
 import Icon from './packages/icon'
+import Button from './packages/button'
+import ButtonGroup from './packages/button-group'
 // import Input from '../packages/input/index.js'
 // import Switch from '../packages/switch/index.js'
 // import Pagination from '../packages/pagination/index.js'
@@ -26,7 +28,9 @@ import Icon from './packages/icon'
 const components = [
   Row,
   Col,
-  Icon
+  Icon,
+  ButtonGroup,
+  Button
   // Pagination,
   // Input,
   // Switch,
@@ -76,6 +80,9 @@ export default {
   version: '1.0.0',
   Row,
   Col,
+  Icon,
+  ButtonGroup,
+  Button,
   // locale: locale.use,
   // i18n: locale.i18n,
   // CollapseTransition,
@@ -95,8 +102,7 @@ export default {
   // Notification,
   // Icon,
   Message,
-  install,
-  Icon
+  install
   // Steps,
   // Step,
   // Collapse,
