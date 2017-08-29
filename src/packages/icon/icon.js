@@ -7,21 +7,29 @@ export default {
 
   props: {
     type: String,
-    size: [Number, String],
-    color: String
+    spin: Boolean,
+    styles: Object
   },
 
   computed: {
     classes () {
-      return `${prefixCls} ${prefixCls}-${this.type}`
+      return {
+        [`${prefixCls}`]: true,
+        [`${prefixCls}-spin`]: !!this.spin || this.type === 'loading',
+        [`${prefixCls}-${this.type}`]: true
+      }
     },
     style () {
       let style = {}
-      if (this.size) {
-        style['font-size'] = `${this.size}px`
-      }
-      if (this.color) {
-        style['color'] = this.color
+      if (this.styles) {
+        Object.keys(this.styles).forEach(prop => {
+          if (prop === 'fontSize') {
+            style['font-size'] = `${this.styles[prop]}px`
+          }
+          if (prop === 'color') {
+            style['color'] = this.styles[prop]
+          }
+        })
       }
       return style
     }
