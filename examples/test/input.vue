@@ -5,7 +5,7 @@
       wu-input(placeholder="default")
       wu-input(placeholder="small" size="small")
     .demo-content
-      wu-input
+      wu-input(v-model="input")
         template(slot="addonBefore") http://
         template(slot="addonAfter") .com
       wu-input
@@ -16,9 +16,13 @@
   export default {
     data () {
       return {
+        input: ''
       }
     },
-    created () {
+    watch: {
+      input (newVal, oldVal) {
+        console.log(newVal)
+      }
     },
     methods: {
     }

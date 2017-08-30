@@ -12,7 +12,10 @@
         :maxlength="maxlength",
         :readonly="readonly",
         :name="name",
-        :value="currentValue"
+        :value="currentValue",
+        @input="handleInput",
+        @focus="handleFocus",
+        @blur="handleBlur"
       )
       slot(name="icon" v-if="icon")
         icon(type="icon")
@@ -87,6 +90,12 @@
       }
     },
 
+    watch: {
+      value (newVal, oldVal) {
+        this.setCurrentValue(newVal)
+      }
+    },
+
     methods: {
       getInputClassName () {
         return {
@@ -95,6 +104,26 @@
           [`${prefixCls}-lg`]: this.size === 'large',
           [`${prefixCls}-disabled`]: this.disabled
         }
+      },
+
+      setCurrentValue (value) {
+        if (value === this.currentValue) return
+        this.currentValue = value
+      },
+
+      handleBlur (event) {
+        this.$emit('blur', event)
+      },
+
+      handleInput (event) {
+        const value = event.target.value
+        this.$emit('input', value)
+        this.setCurrentValue(value)
+        this.$emit('change', value)
+      },
+
+      handleFocus (event) {
+        this.$emit('focus', event)
       }
     }
   }
