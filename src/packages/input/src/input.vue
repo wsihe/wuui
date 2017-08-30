@@ -1,23 +1,35 @@
 <template lang="pug">
-  input(
-    ref="input",
-    :type="type",
-    :class="inputClasses",
-    :placeholder="placeholder",
-    :disabled="disabled",
-    :maxlength="maxlength",
-    :readonly="readonly",
-    :name="name"
-  )
+  span(:class="[prefixCls + '-group-wrapper']")
+    span(:class="wrapperClasses")
+      span(:class="[prefixCls + '-group-addon']" v-if="$slots.addonBefore")
+        slot(name="addonBefore")
+      input(
+        ref="input",
+        :type="type",
+        :class="inputClasses",
+        :placeholder="placeholder",
+        :disabled="disabled",
+        :maxlength="maxlength",
+        :readonly="readonly",
+        :name="name",
+        :value="currentValue"
+      )
+      slot(name="icon" v-if="icon")
+        icon(type="icon")
+      span(:class="[prefixCls + '-group-addon']" v-if="$slots.addonAfter")
+        slot(name="addonAfter")
 </template>
 
 <script>
+  import Icon from '../../icon'
   const prefixCls = 'wu-input'
 
   export default {
     name: 'WuInput',
 
     componentName: 'WuInput',
+
+    components: {Icon},
 
     props: {
       type: {
@@ -41,12 +53,37 @@
         type: Boolean,
         default: false
       },
-      className: String
+      className: String,
+      name: String,
+      maxlength: Number,
+      icon: String
+    },
+
+    data () {
+      return {
+        currentValue: this.value,
+        prefixCls: prefixCls,
+        prefix: true,
+        suffix: true
+      }
     },
 
     computed: {
+      wrapperClasses () {
+        const wrapperClassName = `${prefixCls}-group`
+        return {
+          [`${prefixCls}-wrapper`]: true,
+          [wrapperClassName]: (this.addonBefore || this.addonAfter)
+        }
+      },
       inputClasses () {
         return this.getInputClassName()
+      },
+      addonBefore () {
+        return this.$slots.addonBefore !== undefined
+      },
+      addonAfter () {
+        return this.$slots.addonAfter !== undefined
       }
     },
 
