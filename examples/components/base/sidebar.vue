@@ -90,7 +90,7 @@
         as-button()
         background #fff
         .icon
-          margin-right 20px
+          margin-right 18px
           display inline-block
         .icon-expand
           position absolute
@@ -114,13 +114,15 @@
           span
             display inline-block
             width 100%
-            padding-left 52px
+            padding-left 50px
             font-size 14px
             color rgba(0,0,0,.65)
             height 40px
             line-height 40px
             white-space nowrap
             as-button()
+            text-overflow ellipsis
+            overflow hidden
             &:hover, &.active
               color #2f92d1
               &::before

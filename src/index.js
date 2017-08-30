@@ -5,7 +5,7 @@ import Message from './packages/message'
 import Icon from './packages/icon'
 import Button from './packages/button'
 import ButtonGroup from './packages/button-group'
-// import Input from '../packages/input/index.js'
+import Input from './packages/input'
 // import Switch from '../packages/switch/index.js'
 // import Pagination from '../packages/pagination/index.js'
 // import Select from '../packages/select/index.js'
@@ -30,7 +30,8 @@ const components = [
   Col,
   Icon,
   ButtonGroup,
-  Button
+  Button,
+  Input
   // Pagination,
   // Input,
   // Switch,
@@ -83,6 +84,7 @@ export default {
   Icon,
   ButtonGroup,
   Button,
+  Input,
   // locale: locale.use,
   // i18n: locale.i18n,
   // CollapseTransition,

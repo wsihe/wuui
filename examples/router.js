@@ -6,6 +6,7 @@ import icon from '@/test/icon'
 import button from '@/test/button'
 import message from '@/test/message'
 import collapse from '@/test/collapse'
+import input from '@/test/input'
 
 Vue.use(Router)
 
@@ -30,6 +31,11 @@ const router = new Router({
         path: 'button',
         name: 'component-button',
         component: button
+      },
+      {
+        path: 'input',
+        name: 'component-input',
+        component: input
       },
       {
         path: 'collapse',
