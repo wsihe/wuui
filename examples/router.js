@@ -7,6 +7,7 @@ import button from '@/test/button'
 import message from '@/test/message'
 import collapse from '@/test/collapse'
 import input from '@/test/input'
+import radio from '@/test/radio'
 
 Vue.use(Router)
 
@@ -36,6 +37,11 @@ const router = new Router({
         path: 'input',
         name: 'component-input',
         component: input
+      },
+      {
+        path: 'radio',
+        name: 'component-radio',
+        component: radio
       },
       {
         path: 'collapse',

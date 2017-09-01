@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(:class="classes")
+  .wu-radio-group(:class="groupClass")
     slot
 </template>
 
@@ -14,23 +14,14 @@
       className: String,
       size: {
         type: String,
-        default: 'default'
+        default: ''
       }
     },
 
     computed: {
-      classes () {
-        let sizeCls = ''
-        switch (this.size) {
-          case 'large':
-            sizeCls = 'lg'
-            break
-          case 'small':
-            sizeCls = 'sm'
-        }
+      groupClass () {
         return {
-          [`${prefixCls}`]: true,
-          [`${prefixCls}-${sizeCls}`]: sizeCls,
+          [`${prefixCls}-${this.size}`]: !!this.size,
           [`${this.className}`]: !!this.className
         }
       }

@@ -1,7 +1,23 @@
 <template lang="pug">
   .page
     .demo-content
-
+      wu-radio 备选项
+      wu-radio 备选项
+    .demo-content
+      wu-radio-group(size="large")
+        wu-radio-button 备选项
+        wu-radio-button 备选项
+        wu-radio-button 备选项
+    .demo-content
+      wu-radio-group
+        wu-radio-button 备选项
+        wu-radio-button 备选项
+        wu-radio-button 备选项
+    .demo-content
+      wu-radio-group(size="small")
+        wu-radio-button 备选项
+        wu-radio-button 备选项
+        wu-radio-button 备选项
 </template>
 
 <script>

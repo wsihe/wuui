@@ -1,13 +1,14 @@
 <template lang="pug">
   label.wu-radio-wrapper(:class="wrapperClass")
-    span(:class="radioClass")
+    span.wu-radio(:class="radioClass")
       input.wu-radio-input(
         type="radio",
         :disabled="disabled",
         :value="currentValue"
       )
       span.wu-radio-inner
-    slot {{label}}
+    span
+      slot {{label}}
 </template>
 
 <script>
