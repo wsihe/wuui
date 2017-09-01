@@ -1,19 +1,30 @@
-/**
-* @file   checkbox-group 
-* @author river 
-* @create 2017-08-30 19:15
-*/
-
 <template lang="pug">
-  .page.page-asset-view
-
+  .wu-checkbox-group(:class="groupClass")
+    slot
 </template>
 
 <script>
-  export default {}
-</script>
+  const prefixCls = 'wu-checkbox-group'
+  export default {
+    name: 'WuCheckboxGroup',
 
-<style lang="stylus" scoped>
-  .page-asset-view
-    display block
-</style>
+    componentName: 'WuCheckboxGroup',
+
+    props: {
+      className: String,
+      size: {
+        type: String,
+        default: ''
+      }
+    },
+
+    computed: {
+      groupClass () {
+        return {
+          [`${prefixCls}-${this.size}`]: !!this.size,
+          [`${this.className}`]: !!this.className
+        }
+      }
+    }
+  }
+</script>

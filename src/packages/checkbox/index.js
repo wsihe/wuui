@@ -1,5 +1,3 @@
-import Checkbox from './src/Checkbox'
-// import TextArea from './textArea'
+import Checkbox from './src/checkbox'
 
-// Checkbox.group = TextArea
 export default Checkbox

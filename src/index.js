@@ -7,8 +7,10 @@ import Button from './packages/button'
 import ButtonGroup from './packages/button-group'
 import Input from './packages/input'
 import Radio from './packages/radio'
-import radioButton from './packages/radio-button'
-import radioGroup from './packages/radio-group'
+import RadioButton from './packages/radio-button'
+import RadioGroup from './packages/radio-group'
+import Checkbox from './packages/checkbox'
+import CheckboxGroup from './packages/checkbox-group'
 
 const components = [
   Row,
@@ -18,8 +20,10 @@ const components = [
   Button,
   Input,
   Radio,
-  radioButton,
-  radioGroup
+  RadioButton,
+  RadioGroup,
+  Checkbox,
+  CheckboxGroup
 ]
 
 const install = function (Vue, opts = {}) {
@@ -45,8 +49,10 @@ export default {
   Button,
   Input,
   Radio,
-  radioButton,
-  radioGroup,
+  RadioButton,
+  RadioGroup,
+  Checkbox,
+  CheckboxGroup,
   Message,
   install
 }

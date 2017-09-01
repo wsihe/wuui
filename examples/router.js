@@ -8,6 +8,7 @@ import message from '@/test/message'
 import collapse from '@/test/collapse'
 import input from '@/test/input'
 import radio from '@/test/radio'
+import checkbox from '@/test/checkbox'
 
 Vue.use(Router)
 
@@ -42,6 +43,11 @@ const router = new Router({
         path: 'radio',
         name: 'component-radio',
         component: radio
+      },
+      {
+        path: 'checkbox',
+        name: 'component-checkbox',
+        component: checkbox
       },
       {
         path: 'collapse',

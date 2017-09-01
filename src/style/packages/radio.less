@@ -1,11 +1,15 @@
+@radio-prefix-cls: ~"@{ant-prefix}-radio";
+@radio-group-prefix-cls: ~"@{radio-prefix-cls}-group";
+@radio-inner-prefix-cls: ~"@{radio-prefix-cls}-inner";
 @radio-duration: .3s;
 
-.wu-radio-group {
+.@{radio-group-prefix-cls} {
   display: inline-block;
   font-size: @font-size-base;
 }
 
-.wu-radio-wrapper {
+// 一般状态
+.@{radio-prefix-cls}-wrapper {
   font-size: @font-size-base;
   display: inline-block;
   position: relative;
@@ -14,7 +18,7 @@
   cursor: pointer;
 }
 
-.wu-radio {
+.@{radio-prefix-cls} {
   white-space: nowrap;
   outline: none;
   display: inline-block;
@@ -22,10 +26,10 @@
   line-height: 1;
   vertical-align: text-bottom;
   cursor: pointer;
-  .wu-radio-wrapper:hover &,
+  .@{radio-prefix-cls}-wrapper:hover &,
   &:hover,
   &-focused {
-    .wu-radio-inner {
+    .@{radio-inner-prefix-cls} {
       border-color: @primary-color;
     }
   }
@@ -43,7 +47,7 @@
     visibility: hidden;
   }
   &:hover:after,
-  .wu-radio-wrapper:hover &:after {
+  .@{radio-prefix-cls}-wrapper:hover &:after {
     visibility: visible;
   }
   &-inner {
@@ -90,8 +94,9 @@
   }
 }
 
-.wu-radio-checked {
-  .wu-radio-inner {
+// 选中状态
+.@{radio-prefix-cls}-checked {
+  .@{radio-inner-prefix-cls} {
     border-color: @primary-color;
     &:after {
       transform: scale(1);
@@ -101,8 +106,8 @@
   }
 }
 
-.wu-radio-disabled {
-  .wu-radio-inner {
+.@{radio-prefix-cls}-disabled {
+  .@{radio-inner-prefix-cls} {
     border-color: @border-color-base !important;
     background-color: @input-disabled-bg;
     &:after {
@@ -110,7 +115,7 @@
     }
   }
 
-  .wu-radio-input {
+  .@{radio-prefix-cls}-input {
     cursor: not-allowed;
   }
 
@@ -120,12 +125,12 @@
   }
 }
 
-span.wu-radio + * {
+span.@{radio-prefix-cls} + * {
   padding-left: 8px;
   padding-right: 8px;
 }
 
-.wu-radio-button-wrapper {
+.@{radio-prefix-cls}-button-wrapper {
   margin: 0;
   height: @input-height-base;
   line-height: @input-height-base - 2px;
@@ -143,19 +148,19 @@ span.wu-radio + * {
     color: @radio-button-color;
   }
 
-  > .wu-radio-button {
+  > .@{radio-prefix-cls}-button {
     margin-left: 0;
     display: block;
     width: 0;
     height: 0;
   }
 
-  .wu-radio-group-large & {
+  .@{radio-group-prefix-cls}-large & {
     height: @input-height-lg;
     line-height: @input-height-lg - 2px;
   }
 
-  .wu-radio-group-small & {
+  .@{radio-group-prefix-cls}-small & {
     height: @input-height-sm;
     line-height: @input-height-sm - 2px;
     padding: 0 12px;
@@ -198,7 +203,7 @@ span.wu-radio + * {
     position: relative;
   }
 
-  .wu-radio-inner,
+  .@{radio-prefix-cls}-inner,
   input[type="checkbox"],
   input[type="radio"] {
     .opacity(0);
