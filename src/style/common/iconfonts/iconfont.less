@@ -1,17 +1,11 @@
-// font-face
-// @icon-url： 字体源文件的地址
 @font-face {
   font-family: 'anticon';
-  src: url('iconfont.eot'); /* IE9*/
+  src: url('iconfont.eot');                                  //IE9
   src:
-  /* IE6-IE8 */
-  url('@{icon-url}.eot?#iefix') format('embedded-opentype'),
-  /* chrome、firefox */
-  url('@{icon-url}.woff') format('woff'),
-  /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
-  url('@{icon-url}.ttf') format('truetype'),
-  /* iOS 4.1- */
-  url('@{icon-url}.svg#iconfont') format('svg');
+  url('@{icon-url}.eot?#iefix') format('embedded-opentype'), // IE6-IE8
+  url('@{icon-url}.woff') format('woff'),                    // chrome、firefox
+  url('@{icon-url}.ttf') format('truetype'),                 // chrome、firefox、opera、Safari, Android, iOS 4.2+
+  url('@{icon-url}.svg#iconfont') format('svg');             // iOS 4.1
 }
 
 .@{iconfont-css-prefix} {
@@ -27,36 +21,19 @@
 .@{iconfont-css-prefix}-caret-down:before { content: "\e606"; }
 .@{iconfont-css-prefix}-caret-up:before { content: "\e607"; }
 .@{iconfont-css-prefix}-right-circle:before { content: "\e608"; }
-.@{iconfont-css-prefix}-circle-right:before { content: "\e608"; } // antd@1.x compatibility alias: right-circle
-.@{iconfont-css-prefix}-caret-circle-right:before { content: "\e608"; } // antd@1.x compatibility alias: right-circle
 .@{iconfont-css-prefix}-left-circle:before { content: "\e609"; }
-.@{iconfont-css-prefix}-circle-left:before { content: "\e609"; } // antd@1.x compatibility alias: left-circle
-.@{iconfont-css-prefix}-caret-circle-left:before { content: "\e609"; } // antd@1.x compatibility alias: left-circle
 .@{iconfont-css-prefix}-up-circle:before { content: "\e60a"; }
-.@{iconfont-css-prefix}-circle-up:before { content: "\e60a"; } // antd@1.x compatibility alias: up-circle
-.@{iconfont-css-prefix}-caret-circle-up:before { content: "\e60a"; } // antd@1.x compatibility alias: up-circle
 .@{iconfont-css-prefix}-down-circle:before { content: "\e60b"; }
-.@{iconfont-css-prefix}-circle-down:before { content: "\e60b"; } // antd@1.x compatibility alias: down-circle
-.@{iconfont-css-prefix}-caret-circle-down:before { content: "\e60b"; } // antd@1.x compatibility alias: down-circle
 .@{iconfont-css-prefix}-right-circle-o:before { content: "\e60c"; }
-.@{iconfont-css-prefix}-circle-o-right:before { content: "\e60c"; } // antd@1.x compatibility alias: right-circle-o
-.@{iconfont-css-prefix}-caret-circle-o-right:before { content: "\e60c"; } // antd@1.x compatibility alias: right-circle-o
 .@{iconfont-css-prefix}-left-circle-o:before { content: "\e60d"; }
-.@{iconfont-css-prefix}-circle-o-left:before { content: "\e60d"; } // antd@1.x compatibility alias: left-circle-o
-.@{iconfont-css-prefix}-caret-circle-o-left:before { content: "\e60d"; } // antd@1.x compatibility alias: left-circle-o
 .@{iconfont-css-prefix}-up-circle-o:before { content: "\e60e"; }
-.@{iconfont-css-prefix}-circle-o-up:before { content: "\e60e"; } // antd@1.x compatibility alias: up-circle-o
-.@{iconfont-css-prefix}-caret-circle-o-up:before { content: "\e60e"; } // antd@1.x compatibility alias: up-circle-o
 .@{iconfont-css-prefix}-down-circle-o:before { content: "\e60f"; }
-.@{iconfont-css-prefix}-circle-o-down:before { content: "\e60f"; } // antd@1.x compatibility alias: down-circle-o
-.@{iconfont-css-prefix}-caret-circle-o-down:before { content: "\e60f"; } // antd@1.x compatibility alias: down-circle-o
 .@{iconfont-css-prefix}-verticle-left:before { content: "\e610"; }
 .@{iconfont-css-prefix}-verticle-right:before { content: "\e611"; }
 .@{iconfont-css-prefix}-rollback:before { content: "\e612"; }
 .@{iconfont-css-prefix}-retweet:before { content: "\e613"; }
 .@{iconfont-css-prefix}-shrink:before { content: "\e614"; }
 .@{iconfont-css-prefix}-arrows-alt:before { content: "\e615"; }
-.@{iconfont-css-prefix}-arrow-salt:before { content: "\e615"; } // antd@1.x compatibility alias: arrows-alt
 .@{iconfont-css-prefix}-reload:before { content: "\e616"; }
 .@{iconfont-css-prefix}-double-right:before { content: "\e617"; }
 .@{iconfont-css-prefix}-double-left:before { content: "\e618"; }
@@ -82,16 +59,12 @@
 .@{iconfont-css-prefix}-exclamation-circle:before { content: "\e62c"; }
 .@{iconfont-css-prefix}-exclamation-circle-o:before { content: "\e62d"; }
 .@{iconfont-css-prefix}-close-circle:before { content: "\e62e"; }
-.@{iconfont-css-prefix}-cross-circle:before { content: "\e62e"; } // antd@1.x compatibility alias: close-circle
 .@{iconfont-css-prefix}-close-circle-o:before { content: "\e62f"; }
-.@{iconfont-css-prefix}-cross-circle-o:before { content: "\e62f"; } // antd@1.x compatibility alias: close-circle-o
 .@{iconfont-css-prefix}-check-circle:before { content: "\e630"; }
 .@{iconfont-css-prefix}-check-circle-o:before { content: "\e631"; }
 .@{iconfont-css-prefix}-check:before { content: "\e632"; }
 .@{iconfont-css-prefix}-close:before { content: "\e633"; }
-.@{iconfont-css-prefix}-cross:before { content: "\e633"; } // antd@1.x compatibility alias: close
 .@{iconfont-css-prefix}-customer-service:before { content: "\e634"; }
-.@{iconfont-css-prefix}-customerservice:before { content: "\e634"; } // antd@1.x compatibility alias: customer-service
 .@{iconfont-css-prefix}-credit-card:before { content: "\e635"; }
 .@{iconfont-css-prefix}-code-o:before { content: "\e636"; }
 .@{iconfont-css-prefix}-book:before { content: "\e637"; }
@@ -110,7 +83,6 @@
 .@{iconfont-css-prefix}-swap-right:before { content: "\e644"; }
 .@{iconfont-css-prefix}-plus-square-o:before { content: "\e645"; }
 .@{iconfont-css-prefix}-frown:before { content: "\e646"; }
-.@{iconfont-css-prefix}-frown-circle:before { content: "\e646"; } // antd@1.x compatibility alias: frown
 .@{iconfont-css-prefix}-ellipsis:before { content: "\e647"; }
 .@{iconfont-css-prefix}-copy:before { content: "\e648"; }
 .@{iconfont-css-prefix}-menu-fold:before { content: "\e658"; }
@@ -128,7 +100,6 @@
 .@{iconfont-css-prefix}-file:before { content: "\e664"; }
 .@{iconfont-css-prefix}-exception:before { content: "\e665"; }
 .@{iconfont-css-prefix}-meh:before { content: "\e666"; }
-.@{iconfont-css-prefix}-meh-circle:before { content: "\e666"; } // antd@1.x compatibility alias: meh
 .@{iconfont-css-prefix}-meh-o:before { content: "\e667"; }
 .@{iconfont-css-prefix}-shopping-cart:before { content: "\e668"; }
 .@{iconfont-css-prefix}-save:before { content: "\e669"; }
@@ -201,7 +172,6 @@
 .@{iconfont-css-prefix}-pay-circle:before { content: "\e6a5"; }
 .@{iconfont-css-prefix}-pay-circle-o:before { content: "\e6a6"; }
 .@{iconfont-css-prefix}-smile:before { content: "\e6a7"; }
-.@{iconfont-css-prefix}-smile-circle:before { content: "\e6a7"; }  // antd@1.x compatibility alias: smile
 .@{iconfont-css-prefix}-smile-o:before { content: "\e6a8"; }
 .@{iconfont-css-prefix}-frown-o:before { content: "\e6a9"; }
 .@{iconfont-css-prefix}-calculator:before { content: "\e6aa"; }
