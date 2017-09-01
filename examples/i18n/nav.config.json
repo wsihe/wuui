@@ -49,10 +49,6 @@
         {
           "name": "Switch 开关",
           "path": "switch"
-        },
-        {
-          "name": "DatePicker 日期选择",
-          "path": "date-picker"
         }
       ]
     },
@@ -64,6 +60,10 @@
         {
           "name": "Pagination 分页",
           "path": "pagination"
+        },
+        {
+          "name": "DatePicker 日期选择",
+          "path": "date-picker"
         }
       ]
     },
@@ -75,10 +75,6 @@
         {
           "name": "Message 消息",
           "path": "message"
-        },
-        {
-          "name": "MessageBox 弹框",
-          "path": "message-box"
         }
       ]
     },
@@ -106,14 +102,6 @@
       "name": "Others",
       "path": null,
       "menuItem": [
-        {
-          "name": "Tooltip 文字提示",
-          "path": "tooltip"
-        },
-        {
-          "name": "Popover 弹出框",
-          "path": "popover"
-        },
         {
           "name": "Collapse 折叠面板",
           "path": "collapse"

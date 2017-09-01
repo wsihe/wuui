@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(:class="classes")
+  div.wu-btn-group(:class="classes")
     slot
 </template>
 
@@ -29,7 +29,6 @@ export default {
           sizeCls = 'sm'
       }
       return {
-        [`${prefixCls}`]: true,
         [`${prefixCls}-${sizeCls}`]: sizeCls,
         [`${this.className}`]: !!this.className
       }

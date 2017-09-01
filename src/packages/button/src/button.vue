@@ -1,5 +1,5 @@
 <template lang="pug">
-  button(:class="classes")
+  button.wu-btn(:class="classes")
     Icon(class="" type="loading" v-if="loading")
     Icon(:type="icon" v-if="icon && !loading")
     span(v-if="$slots.default")
@@ -44,7 +44,6 @@ export default {
           sizeCls = 'sm'
       }
       return {
-        [`${prefixCls}`]: true,
         [`${prefixCls}-${this.type}`]: this.type,
         [`${prefixCls}-${this.shape}`]: this.shape,
         [`${prefixCls}-${sizeCls}`]: sizeCls,

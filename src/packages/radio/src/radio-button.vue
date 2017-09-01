@@ -1,19 +1,39 @@
-/**
-* @file   radio-button 
-* @author river 
-* @create 2017-08-30 19:10
-*/
-
 <template lang="pug">
-  .page.page-asset-view
-
+  div(:class="classes")
+    slot
 </template>
 
 <script>
-  export default {}
-</script>
+  const prefixCls = 'wu-radio-group'
+  export default {
+    name: 'WuRadioGroup',
 
-<style lang="stylus" scoped>
-  .page-asset-view
-    display block
-</style>
+    componentName: 'WuRadioGroup',
+
+    props: {
+      className: String,
+      size: {
+        type: String,
+        default: 'default'
+      }
+    },
+
+    computed: {
+      classes () {
+        let sizeCls = ''
+        switch (this.size) {
+          case 'large':
+            sizeCls = 'lg'
+            break
+          case 'small':
+            sizeCls = 'sm'
+        }
+        return {
+          [`${prefixCls}`]: true,
+          [`${prefixCls}-${sizeCls}`]: sizeCls,
+          [`${this.className}`]: !!this.className
+        }
+      }
+    }
+  }
+</script>
