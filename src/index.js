@@ -11,6 +11,7 @@ import RadioButton from './packages/radio-button'
 import RadioGroup from './packages/radio-group'
 import Checkbox from './packages/checkbox'
 import CheckboxGroup from './packages/checkbox-group'
+import Select from './packages/select'
 
 const components = [
   Row,
@@ -23,7 +24,8 @@ const components = [
   RadioButton,
   RadioGroup,
   Checkbox,
-  CheckboxGroup
+  CheckboxGroup,
+  Select
 ]
 
 const install = function (Vue, opts = {}) {
@@ -53,6 +55,7 @@ export default {
   RadioGroup,
   Checkbox,
   CheckboxGroup,
+  Select,
   Message,
   install
 }
