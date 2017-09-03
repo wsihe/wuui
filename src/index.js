@@ -12,6 +12,8 @@ import RadioGroup from './packages/radio-group'
 import Checkbox from './packages/checkbox'
 import CheckboxGroup from './packages/checkbox-group'
 import Select from './packages/select'
+import Option from './packages/option'
+import OptionGroup from './packages/option-group'
 
 const components = [
   Row,
@@ -25,7 +27,9 @@ const components = [
   RadioGroup,
   Checkbox,
   CheckboxGroup,
-  Select
+  Select,
+  Option,
+  OptionGroup
 ]
 
 const install = function (Vue, opts = {}) {
@@ -33,8 +37,6 @@ const install = function (Vue, opts = {}) {
   components.map(component => {
     Vue.component(component.name, component)
   })
-
-  // Vue.use(Loading.directive)
   Vue.prototype.$message = Message
 }
 
@@ -56,6 +58,8 @@ export default {
   Checkbox,
   CheckboxGroup,
   Select,
+  Option,
+  OptionGroup,
   Message,
   install
 }
