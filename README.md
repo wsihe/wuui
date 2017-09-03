@@ -5,8 +5,7 @@
 </p>
 
 # Wuui
-[![Build Status](https://travis-ci.org/wsihe/wuui.svg?branch=master)]
-
+[![Build Status](https://travis-ci.org/wsihe/wuui.svg?branch=master)](https://travis-ci.org/wsihe/wuui)
 [![npm package](https://img.shields.io/npm/v/wuui.svg)](https://www.npmjs.org/package/wuui)
 [![NPM downloads](http://img.shields.io/npm/dm/wuui.svg)](https://npmjs.org/package/wuui)
 
