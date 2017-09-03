@@ -1,9 +1,9 @@
 <template lang="pug">
   .page
     .demo-content
-      wu-select
-    .demo-content
-      wu-select(disabled)
+      wu-select 111
+    //.demo-content
+    //  wu-select(disabled)
 </template>
 
 <script>
@@ -20,7 +20,7 @@
 </script>
 
 <style lang="stylus">
-  .wu-select
+  .demo-content .wu-select
     width 200px
 </style>
 
