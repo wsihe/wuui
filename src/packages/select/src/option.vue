@@ -1,30 +1,83 @@
 <template lang="pug">
-  .wu-checkbox-group(:class="groupClass")
-    slot
+  li.wu-select-dropdown-menu-item(
+      unselectable="unselectable",
+      :class="itemClasses",
+      @click.stop="selectOptionClick"
+    )
+    slot  {{currentLabel}}
 </template>
 
 <script>
-  const prefixCls = 'wu-checkbox-group'
-  export default {
-    name: 'WuCheckboxGroup',
+  import Emitter from 'wuui/mixins/emitter'
 
-    componentName: 'WuCheckboxGroup',
+  const prefixCls = 'wu-select-dropdown-menu-item'
+  export default {
+    mixins: [Emitter],
+
+    name: 'WuOption',
+
+    componentName: 'WuOption',
 
     props: {
-      className: String,
-      size: {
-        type: String,
-        default: ''
+      value: {
+        typr: [String, Number],
+        required: true
+      },
+      label: [String, Number],
+      disabled: {
+        type: Boolean,
+        default: false
       }
     },
 
+    data () {
+      return {}
+    },
+
     computed: {
-      groupClass () {
+      parent () {
+        let result = this.$parent
+        while (!result.isSelect) {
+          result = result.$parent
+        }
+        return result
+      },
+
+      itemSelected () {
+        return this.parent.value === this.value
+      },
+
+      currentLabel () {
+        return this.label || this.value
+      },
+
+      itemClasses () {
         return {
-          [`${prefixCls}-${this.size}`]: !!this.size,
+          [`${prefixCls}-selected`]: this.itemSelected,
+          [`${prefixCls}-disabled`]: !!this.size,
+          [`${prefixCls}-active`]: this.itemSelected,
           [`${this.className}`]: !!this.className
         }
       }
+    },
+
+    watch: {
+      currentLabel () {
+        this.dispatch('WuSelect', 'setSelected')
+      }
+    },
+
+    methods: {
+      selectOptionClick () {
+        if (!this.disabled) {
+          this.dispatch('WuSelect', 'handleOptionClick', this)
+        }
+      }
+    },
+
+    created () {
+      this.parent.options.push(this)
+      this.parent.cachedOptions.push(this)
     }
   }
 </script>

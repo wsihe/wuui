@@ -133,6 +133,6 @@
                 border 1px solid #2f92d1
                 border-radius 100%
                 left 34px
-                bottom 17px
+                bottom 21px
                 background #2f92d1
 </style>

@@ -45,8 +45,8 @@
     },
 
     watch: {
-      '$parent.inputWidth' () {
-        this.minWidth = this.$parent.$el.getBoundingClientRect().width + 'px'
+      '$parent.selectWidth' () {
+        this.minWidth = this.$parent.$refs.reference.clientWidth + 2 + 'px'
       }
     },
 
@@ -54,9 +54,7 @@
       this.referenceElm = this.$parent.$refs.reference
       this.$parent.popperElm = this.popperElm = this.$el
       this.$on('updatePopper', () => {
-//        console.log(this.$parent.$refs.reference)
-        this.updatePopper()
-//        if (this.$parent.visible) this.updatePopper()
+        if (this.$parent.visible) this.updatePopper()
       })
       this.$on('destroyPopper', this.destroyPopper)
     }
