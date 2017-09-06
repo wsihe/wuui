@@ -15,6 +15,9 @@ import Select from './packages/select'
 import Option from './packages/option'
 import OptionGroup from './packages/option-group'
 import AutoComplete from './packages/auto-complete'
+import Dropdown from './packages/dropdown'
+import DropdownMenu from './packages/dropdown-menu'
+import DropdownItem from './packages/dropdown-item'
 
 const components = [
   Row,
@@ -31,7 +34,10 @@ const components = [
   Select,
   Option,
   OptionGroup,
-  AutoComplete
+  AutoComplete,
+  Dropdown,
+  DropdownMenu,
+  DropdownItem
 ]
 
 const install = function (Vue, opts = {}) {
@@ -63,6 +69,9 @@ export default {
   Option,
   OptionGroup,
   AutoComplete,
+  Dropdown,
+  DropdownMenu,
+  DropdownItem,
   Message,
   install
 }

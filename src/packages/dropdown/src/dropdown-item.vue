@@ -1,14 +1,36 @@
-/**
-* @file   dropdown 
-* @author river 
-* @create 2017-09-03 21:12
-*/
-
 <template lang="pug">
-
+  div
+    slot
 </template>
 
 <script>
-  export default {}
-</script>
+  export default {
+    name: 'WuDropdownItem',
 
+    componentName: 'WuDropdownItem',
+
+    props: {
+    },
+
+    data () {
+      return {
+      }
+    },
+
+    computed: {
+    },
+
+    watch: {
+    },
+
+    methods: {
+
+    },
+
+    created () {
+    },
+
+    mounted () {
+    }
+  }
+</script>
