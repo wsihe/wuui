@@ -1,5 +1,6 @@
 <template lang="pug">
   .page
+    h2 Pagination
     .demo-content
 </template>
 

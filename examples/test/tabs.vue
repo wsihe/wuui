@@ -1,5 +1,6 @@
 zx<template lang="pug">
   .page
+    h2 tabs
     .demo-content
 </template>
 

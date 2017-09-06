@@ -1,5 +1,6 @@
 <template lang="pug">
   .page
+    h2 Input
     .demo-content
       wu-input(placeholder="large" size="large")
       wu-input(placeholder="default")

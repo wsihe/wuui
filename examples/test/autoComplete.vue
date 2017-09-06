@@ -1,5 +1,6 @@
 <template lang="pug">
   .page
+    h2 autoComplete
     .demo-content
       wu-auto-complete(value="111")
 </template>

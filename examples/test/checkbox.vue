@@ -1,5 +1,6 @@
 <template lang="pug">
   .page
+    h2 CheckBox
     .demo-content
       wu-checkbox 备选项
     .demo-content

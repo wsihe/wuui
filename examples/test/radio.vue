@@ -1,5 +1,6 @@
 <template lang="pug">
   .page
+    h2 Radio
     .demo-content
       wu-radio 备选项
       wu-radio 备选项

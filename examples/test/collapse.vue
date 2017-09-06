@@ -1,6 +1,7 @@
 <template lang="pug">
-  .page-message
-    | 111
+  .page
+    h2 Collapse
+    .demo-content
 </template>
 
 <script>

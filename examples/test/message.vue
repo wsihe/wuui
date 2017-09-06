@@ -1,5 +1,7 @@
 <template lang="pug">
-  .page-message
+  .page
+    h2 Message
+    .demo-content
     button(@click = 'info') 打开消息提示
 </template>
 

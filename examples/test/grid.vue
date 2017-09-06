@@ -1,5 +1,6 @@
 <template lang="pug">
   .page
+    h2 Grid
     .demo-content
       wu-row(:gutter="16")
         wu-col(:span="6")

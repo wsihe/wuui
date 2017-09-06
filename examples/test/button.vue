@@ -1,5 +1,6 @@
 <template lang="pug">
   .page
+    h2 Button
     .demo-content
       wu-button(type="primary") Primary
       wu-button Default

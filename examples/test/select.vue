@@ -1,5 +1,6 @@
 <template lang="pug">
   .page
+    h2 Select
     .demo-content
       wu-select(v-model="value1")
         wu-option(value="广州")
