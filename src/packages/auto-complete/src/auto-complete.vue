@@ -1,7 +1,9 @@
 <template lang="pug">
   wu-select(
+    v-model="currentValue",
     :className = "prefixCls",
-    :placeholder="placeholder"
+    :placeholder="placeholder",
+    showSearch
   )
     slot
       wu-option(value="111")
@@ -44,7 +46,8 @@
     data () {
       return {
         prefixCls: prefixCls,
-        inputWidth: 0
+        inputWidth: 0,
+        currentValue: this.value
       }
     },
 

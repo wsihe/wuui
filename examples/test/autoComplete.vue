@@ -1,7 +1,7 @@
 <template lang="pug">
   .page
     .demo-content
-      wu-auto-complete
+      wu-auto-complete(value="111")
 </template>
 
 <script>
