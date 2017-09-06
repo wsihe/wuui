@@ -11,6 +11,10 @@ import radio from '@/test/radio'
 import checkbox from '@/test/checkbox'
 import select from '@/test/select'
 import autoComplete from '@/test/autoComplete'
+import switchTest from '@/test/switch'
+import pagination from '@/test/pagination'
+import dropdown from '@/test/dropdown'
+import tabs from '@/test/tabs'
 
 Vue.use(Router)
 
@@ -60,6 +64,26 @@ const router = new Router({
         path: 'autoComplete',
         name: 'component-autoComplete',
         component: autoComplete
+      },
+      {
+        path: 'switch',
+        name: 'component-switch',
+        component: switchTest
+      },
+      {
+        path: 'pagination',
+        name: 'component-pagination',
+        component: pagination
+      },
+      {
+        path: 'dropdown',
+        name: 'component-dropdown',
+        component: dropdown
+      },
+      {
+        path: 'tabs',
+        name: 'component-tabs',
+        component: tabs
       },
       {
         path: 'collapse',

@@ -60,10 +60,6 @@
         {
           "name": "Pagination 分页",
           "path": "pagination"
-        },
-        {
-          "name": "DatePicker 日期选择",
-          "path": "date-picker"
         }
       ]
     },
@@ -83,10 +79,6 @@
       "name": "Navigation",
       "path": null,
       "menuItem": [
-        {
-          "name": "Steps 步骤条",
-          "path": "steps"
-        },
         {
           "name": "Dropdown 下拉菜单",
           "path": "dropdown"
