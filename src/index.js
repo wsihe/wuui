@@ -14,6 +14,7 @@ import CheckboxGroup from './packages/checkbox-group'
 import Select from './packages/select'
 import Option from './packages/option'
 import OptionGroup from './packages/option-group'
+import AutoComplete from './packages/auto-complete'
 
 const components = [
   Row,
@@ -29,7 +30,8 @@ const components = [
   CheckboxGroup,
   Select,
   Option,
-  OptionGroup
+  OptionGroup,
+  AutoComplete
 ]
 
 const install = function (Vue, opts = {}) {
@@ -60,6 +62,7 @@ export default {
   Select,
   Option,
   OptionGroup,
+  AutoComplete,
   Message,
   install
 }

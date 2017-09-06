@@ -1,0 +1,26 @@
+<template lang="pug">
+  .page
+    .demo-content
+      wu-auto-complete
+</template>
+
+<script>
+  export default {
+    data () {
+      return {
+        value1: '北京',
+        value2: '广州'
+      }
+    },
+    watch: {
+    },
+    methods: {
+    }
+  }
+</script>
+
+<style lang="stylus">
+  .demo-content .wu-select
+    width 200px
+</style>
+

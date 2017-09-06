@@ -10,6 +10,7 @@ import input from '@/test/input'
 import radio from '@/test/radio'
 import checkbox from '@/test/checkbox'
 import select from '@/test/select'
+import autoComplete from '@/test/autoComplete'
 
 Vue.use(Router)
 
@@ -54,6 +55,11 @@ const router = new Router({
         path: 'select',
         name: 'component-select',
         component: select
+      },
+      {
+        path: 'autoComplete',
+        name: 'component-autoComplete',
+        component: autoComplete
       },
       {
         path: 'collapse',
