@@ -18,6 +18,7 @@ import AutoComplete from './packages/auto-complete'
 import Dropdown from './packages/dropdown'
 import DropdownMenu from './packages/dropdown-menu'
 import DropdownItem from './packages/dropdown-item'
+import Switch from './packages/switch'
 
 const components = [
   Row,
@@ -37,7 +38,8 @@ const components = [
   AutoComplete,
   Dropdown,
   DropdownMenu,
-  DropdownItem
+  DropdownItem,
+  Switch
 ]
 
 const install = function (Vue, opts = {}) {
@@ -72,6 +74,7 @@ export default {
   Dropdown,
   DropdownMenu,
   DropdownItem,
+  Switch,
   Message,
   install
 }
