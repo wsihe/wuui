@@ -2,7 +2,9 @@
   .page
     h2 Pagination
     .demo-content
-      wu-pagination
+      wu-pagination(:total="20")
+    .demo-content
+      wu-pagination(:total="100")
 </template>
 
 <script>
