@@ -19,6 +19,7 @@ import Dropdown from './packages/dropdown'
 import DropdownMenu from './packages/dropdown-menu'
 import DropdownItem from './packages/dropdown-item'
 import Switch from './packages/switch'
+import Pagination from './packages/pagination'
 
 const components = [
   Row,
@@ -39,7 +40,8 @@ const components = [
   Dropdown,
   DropdownMenu,
   DropdownItem,
-  Switch
+  Switch,
+  Pagination
 ]
 
 const install = function (Vue, opts = {}) {
@@ -75,6 +77,7 @@ export default {
   DropdownMenu,
   DropdownItem,
   Switch,
+  Pagination,
   Message,
   install
 }

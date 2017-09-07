@@ -2,6 +2,7 @@
   .page
     h2 Pagination
     .demo-content
+      wu-pagination
 </template>
 
 <script>
