@@ -2,6 +2,7 @@ zx<template lang="pug">
   .page
     h2 tabs
     .demo-content
+      wu-tabs
 </template>
 
 <script>
