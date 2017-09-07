@@ -1,6 +1,5 @@
 import Vue from 'vue'
-// import { PopupManager } from 'element-ui/src/utils/popup';
-let MessageConstructor = Vue.extend(require('./main.vue'))
+let MessageConstructor = Vue.extend(require('./message.vue'))
 
 let instance
 let instances = []
@@ -29,7 +28,6 @@ var Message = function (options) {
   document.body.appendChild(instance.vm.$el)
   instance.vm.visible = true
   instance.dom = instance.vm.$el
-  // instance.dom.style.zIndex = PopupManager.nextZIndex();
   instances.push(instance)
   return instance.vm
 };

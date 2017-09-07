@@ -56,7 +56,6 @@
 
       handleCurrentChange (val) {
         this.internalCurrentPage = this.getValidCurrentPage(val)
-        console.log('internalCurrentPage:' + this.internalCurrentPage)
       },
       getValidCurrentPage (value) {
         value = parseInt(value, 10)

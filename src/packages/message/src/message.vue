@@ -1,22 +1,21 @@
-<template>
-  <transition name="el-message-fade">
-    <div
-      class="el-message"
-      :class="customClass"
-      v-show="visible"
-      @mouseenter="clearTimer"
-      @mouseleave="startTimer">
-      <img class="el-message__img" :src="typeImg" alt="" v-if="!iconClass">
-      <div class="el-message__group" :class="{ 'is-with-icon': iconClass }">
-        <p><i class="el-message__icon" :class="iconClass" v-if="iconClass"></i>{{ message }}</p>
-        <div v-if="showClose" class="el-message__closeBtn el-icon-close" @click="close"></div>
-      </div>
-    </div>
-  </transition>
+<template lang="pug">
+  .wu-message( v-show="visible", @mouseenter="clearTimer", @mouseleave="startTimer")
+    .wu-message-notice
+      .wu-message-notice-content
+        div(:class="customClass")
+          icon(:type="iconType")
+          span {{ message }}
 </template>
 
 <script type="text/babel">
+
+  import Icon from '../../icon/icon'
+
+  const prefixCls = 'wu-message'
   export default {
+
+    components: {Icon},
+
     data () {
       return {
         visible: false,
@@ -24,7 +23,6 @@
         duration: 3000,
         type: 'info',
         iconClass: '',
-        customClass: '',
         onClose: null,
         showClose: false,
         closed: false,
@@ -33,8 +31,21 @@
     },
 
     computed: {
-      typeImg () {
-        return require(`../assets/${this.type}.svg`)
+      customClass () {
+        return {
+          [`${prefixCls}-custom-content`]: true,
+          [`${prefixCls}-${this.type}`]: !!this.type
+        }
+      },
+      iconType () {
+        let iconType = ({
+          info: 'info-circle',
+          success: 'check-circle',
+          error: 'close-circle',
+          warning: 'exclamation-circle',
+          loading: 'loading'
+        })[this.type]
+        return iconType
       }
     },
 

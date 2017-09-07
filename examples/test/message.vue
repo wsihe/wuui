@@ -2,7 +2,13 @@
   .page
     h2 Message
     .demo-content
-    button(@click = 'info') 打开消息提示
+      button(@click = 'info') info
+    .demo-content
+      button(@click = 'success') success
+    .demo-content
+      button(@click = 'warning') warning
+    .demo-content
+      button(@click = 'error') error
 </template>
 
 <script>
@@ -12,10 +18,22 @@
         this.$message('这是一条消息提示')
       },
       success () {
+        this.$message({
+          message: '这是一条成功消息',
+          type: 'success'
+        })
       },
       warning () {
+        this.$message({
+          message: '这是一条警告消息',
+          type: 'warning'
+        })
       },
       error () {
+        this.$message({
+          message: '这是一条错误消息',
+          type: 'error'
+        })
       },
       destroy () {
       }

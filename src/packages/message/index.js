@@ -1,2 +1,2 @@
-import Message from './src/main.js'
+import Message from './src/message.js'
 export default Message
