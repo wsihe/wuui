@@ -1,4 +1,4 @@
-zx<template lang="pug">
+<template lang="pug">
   .page
     h2 tabs
     .demo-content
