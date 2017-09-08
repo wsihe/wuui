@@ -2,13 +2,13 @@
   .page
     h2 Message
     .demo-content
-      button(@click = 'info') info
+      wu-button(@click = 'info') info
     .demo-content
-      button(@click = 'success') success
+      wu-button(@click = 'success') success
     .demo-content
-      button(@click = 'warning') warning
+      wu-button(@click = 'warning') warning
     .demo-content
-      button(@click = 'error') error
+      wu-button(type="danger", @click = 'error') error
 </template>
 
 <script>
@@ -40,3 +40,8 @@
     }
   }
 </script>
+
+<style lang="stylus">
+  .wu-btn
+    width 100px
+</style>
