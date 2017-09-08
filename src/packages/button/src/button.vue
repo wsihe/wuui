@@ -1,5 +1,5 @@
 <template lang="pug">
-  button.wu-btn(:class="classes")
+  button.wu-btn(:class="classes", @click="handleClick")
     Icon(class="" type="loading" v-if="loading")
     Icon(:type="icon" v-if="icon && !loading")
     span(v-if="$slots.default")
@@ -53,6 +53,11 @@ export default {
         [`${prefixCls}-background-ghost`]: this.ghost,
         [`${this.className}`]: !!this.className
       }
+    }
+  },
+  methods: {
+    handleClick (evt) {
+      this.$emit('click', evt)
     }
   }
 }
