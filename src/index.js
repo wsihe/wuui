@@ -21,6 +21,7 @@ import DropdownItem from './packages/dropdown-item'
 import Switch from './packages/switch'
 import Pagination from './packages/pagination'
 import Tabs from './packages/tabs'
+import TabPane from './packages/tabs-pane'
 
 const components = [
   Row,
@@ -43,7 +44,8 @@ const components = [
   DropdownItem,
   Switch,
   Pagination,
-  Tabs
+  Tabs,
+  TabPane
 ]
 
 const install = function (Vue, opts = {}) {
@@ -56,7 +58,7 @@ const install = function (Vue, opts = {}) {
 
 if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue)
-};
+}
 
 export default {
   version: '0.0.4',
@@ -81,6 +83,7 @@ export default {
   Switch,
   Pagination,
   Tabs,
+  TabPane,
   Message,
   install
 }

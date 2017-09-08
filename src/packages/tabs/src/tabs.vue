@@ -4,15 +4,10 @@
       .wu-tabs-nav-container
         .wu-tabs-nav-wrap
           .wu-tabs-nav-scroll
-            .wu-tabs-nav
+            .wu-tabs-nav(ref="nav")
               .wu-tabs-ink-bar(:class="inkClass", :style="inkStyle")
-              .wu-tabs-tab.wu-tabs-tab-active Tab1
-              .wu-tabs-tab Tab2
-              .wu-tabs-tab Tab3
+              .wu-tabs-tab(:class="navClass(nav)", v-for="nav in panes", @click="handleTabClick(nav,nav.name)") {{nav.tab}}
     .wu-tabs-content(:class="contentClasses")
-      .wu-tabs-tabpane Content of Tab Pane 1
-      .wu-tabs-tabpane Content of Tab Pane 2
-      .wu-tabs-tabpane Content of Tab Pane 3
       slot
 </template>
 
@@ -28,18 +23,22 @@
         type: String,
         default: 'line'
       },
-      tabPosition: {
+      size: {
         type: String,
-        default: 'top'
+        default: 'default'
       },
       animated: {
         type: Boolean,
         default: true
-      }
+      },
+      value: [String, Number]
     },
 
     data () {
       return {
+        prefixCls: prefixCls,
+        activeKey: this.value,
+        panes: [],
         barWidth: 0,
         barOffset: 0
       }
@@ -51,7 +50,7 @@
           [`${prefixCls}-line`]: this.type === 'line',
           [`${prefixCls}-no-animation`]: this.type !== 'line' && !this.animated,
           [`${prefixCls}-card`]: this.type === 'card',
-          [`${prefixCls}-${this.tabPosition}`]: !!this.tabPosition
+          [`${prefixCls}-mini`]: this.size === 'small'
         }
       },
       inkClass () {
@@ -81,16 +80,59 @@
     },
 
     watch: {
+      value (newVal) {
+        this.activeKey = newVal
+      },
+      activeKey () {
+        this.updateInk()
+      }
     },
 
     methods: {
+      navClass (item) {
+        return {
+          [`${prefixCls}-tab-disabled`]: item.disabled,
+          [`${prefixCls}-tab-active`]: item.name === this.activeKey
+        }
+      },
+      addPanes (item) {
+        this.panes.push(item)
+      },
 
-    },
+      handleTabClick (tab, navName) {
+        if (tab.disabled) return
+        this.setActiveKey(navName)
+        this.$emit('on-click', navName)
+      },
 
-    created () {
+      setActiveKey (name) {
+        this.activeKey = name
+        this.$emit('input', name)
+      },
+
+      updateInk () {
+        this.$nextTick(() => {
+          const index = this.panes.findIndex((nav) => nav.name === this.activeKey)
+          const prevTabs = this.$refs.nav.querySelectorAll(`.${prefixCls}-tab`)
+          const tab = prevTabs[index]
+          this.barWidth = parseFloat(tab.offsetWidth)
+          if (index > 0) {
+            let offset = 0
+            const gutter = this.size === 'small' ? 0 : 24
+            for (let i = 0; i < index; i++) {
+              offset += parseFloat(prevTabs[i].offsetWidth) + gutter
+            }
+            this.barOffset = offset
+          } else {
+            this.barOffset = 0
+          }
+        })
+      }
+
     },
 
     mounted () {
+      this.updateInk()
     }
   }
 </script>
