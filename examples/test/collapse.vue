@@ -10,6 +10,14 @@
         wu-collapse-item(header="This is panel header 3")
           p Collapse-Collapse-Collapse3
     .demo-content
+      wu-collapse(v-model="value1")
+        wu-collapse-item(header="This is panel header 1")
+          p Collapse-Collapse-Collapse1
+        wu-collapse-item(header="This is panel header 2" name="2")
+          p Collapse-Collapse-Collapse2
+        wu-collapse-item(header="This is panel header 3")
+          p Collapse-Collapse-Collapse3
+    .demo-content
       wu-collapse(bordered)
         wu-collapse-item(header="This is panel header 1")
           p Collapse-Collapse-Collapse1
@@ -31,7 +39,8 @@
   export default {
     data () {
       return {
-        value: '1'
+        value: '1',
+        value1: '2'
       }
     },
     created () {
