@@ -22,6 +22,8 @@ import Switch from './packages/switch'
 import Pagination from './packages/pagination'
 import Tabs from './packages/tabs'
 import TabPane from './packages/tabs-pane'
+import Collapse from './packages/collapse'
+import CollapseItem from './packages/collapse-item'
 
 const components = [
   Row,
@@ -45,7 +47,9 @@ const components = [
   Switch,
   Pagination,
   Tabs,
-  TabPane
+  TabPane,
+  Collapse,
+  CollapseItem
 ]
 
 const install = function (Vue, opts = {}) {
@@ -84,6 +88,8 @@ export default {
   Pagination,
   Tabs,
   TabPane,
+  Collapse,
+  CollapseItem,
   Message,
   install
 }
