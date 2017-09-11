@@ -11,13 +11,23 @@
         template(slot="addonAfter") .com
       wu-input
         template(slot="addonAfter") .com
+    .demo-content
+      wu-textarea
+    .demo-content
+      wu-textarea(v-model="input2")
+    .demo-content
+      wu-textarea(v-model="input3" autosize)
+    .demo-content
+      wu-textarea(v-model="input3", :autosize="{ minRows: 2, maxRows: 4}")
 </template>
 
 <script>
   export default {
     data () {
       return {
-        input: ''
+        input: '',
+        input2: 'textarea',
+        input3: 'autosize'
       }
     },
     watch: {
