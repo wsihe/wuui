@@ -6,6 +6,7 @@ import Icon from './packages/icon'
 import Button from './packages/button'
 import ButtonGroup from './packages/button-group'
 import Input from './packages/input'
+import TextArea from './packages/textarea'
 import Radio from './packages/radio'
 import RadioButton from './packages/radio-button'
 import RadioGroup from './packages/radio-group'
@@ -32,6 +33,7 @@ const components = [
   ButtonGroup,
   Button,
   Input,
+  TextArea,
   Radio,
   RadioButton,
   RadioGroup,
@@ -72,6 +74,7 @@ export default {
   ButtonGroup,
   Button,
   Input,
+  TextArea,
   Radio,
   RadioButton,
   RadioGroup,
