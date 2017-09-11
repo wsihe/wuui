@@ -1,23 +1,15 @@
-
-/**
- * 通用vue 指令
- */
-
 export default {
-  bind (el, binding, vnode) {
-    var handler = function (e) {
-      if (el.contains(e.target)) {
-        return false
-      }
-      if (binding.expression) {
-        binding.value(e)
+  bind: function (el, { value }) {
+    let onClickOutside = value
+    el.handler = function (e) {
+      if (el && !el.contains(e.target)) {
+        onClickOutside(e)
       }
     }
-    el.__clickOutside__ = handler
-    document.addEventListener('click', handler)
+    document.addEventListener('click', el.handler, true)
   },
-  unbind (el, binding) {
-    document.removeEventListener('click', el.__clickOutside__)
-    delete el.__clickOutside__
+  unbind: function (el) {
+    document.removeEventListener('click', el.handler, true)
+    el.handler = null
   }
 }
