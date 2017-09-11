@@ -10,9 +10,24 @@
           wu-dropdown-item menu item 2
           wu-dropdown-item menu item 3
     .demo-content
+      wu-dropdown(trigger="click")
+        a.wu-dropdown-link click me
+          icon(type="down")
+        wu-dropdown-menu(slot="dropdown")
+          wu-dropdown-item menu item 1
+          wu-dropdown-item menu item 2
+          wu-dropdown-item menu item 3
+    .demo-content
       wu-dropdown(@on-item-click="handleClick")
         a.wu-dropdown-link Hover me
           icon(type="down")
+        wu-dropdown-menu(slot="dropdown")
+          wu-dropdown-item menu item 1
+          wu-dropdown-item menu item 2
+          wu-dropdown-item menu item 3
+    .demo-content
+      wu-dropdown
+        wu-button hover me
         wu-dropdown-menu(slot="dropdown")
           wu-dropdown-item menu item 1
           wu-dropdown-item menu item 2
