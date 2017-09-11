@@ -24,7 +24,7 @@
 <script>
   import Emitter from 'wuui/mixins/emitter'
   import clickoutside from 'wuui/directives/clickoutside'
-  import Icon from '../../icon/icon'
+  import Icon from '../../icon/src/icon'
   import WuSelectDropdown from './dropdown-menu'
   import WuOption from './option'
 

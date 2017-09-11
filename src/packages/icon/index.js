@@ -1,3 +1,3 @@
-import Icon from './icon'
+import Icon from './src/icon'
 
 export default Icon

@@ -10,7 +10,7 @@
 <script>
   import Emitter from 'wuui/mixins/emitter'
 
-  import Icon from '../../icon/icon'
+  import Icon from '../../icon/src/icon'
 
   const prefixCls = 'wu-collapse'
   export default {

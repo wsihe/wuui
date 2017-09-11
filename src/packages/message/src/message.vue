@@ -9,7 +9,7 @@
 
 <script type="text/babel">
 
-  import Icon from '../../icon/icon'
+  import Icon from '../../icon/src/icon'
 
   const prefixCls = 'wu-message'
   export default {
