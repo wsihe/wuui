@@ -16,6 +16,7 @@
     wu-select-dropdown(ref="popper" v-show="visible")
       ul.wu-select-dropdown-menu
         slot
+        li(:class="noCls", v-show="noLocalData") {{noDataText}}
 </template>
 
 <script>
@@ -53,6 +54,10 @@
         type: String,
         default: ''
       },
+      noDataText: {
+        type: String,
+        default: '无匹配数据'
+      },
       showSearch: {
         type: [Boolean, String],
         default: false
@@ -71,6 +76,7 @@
         selected: {},
         selectedLabel: '',
         cachedOptions: [],
+        childCount: 0,
         options: []
       }
     },
@@ -85,6 +91,12 @@
           [`${prefixCls}-open`]: this.visible,
           [`${prefixCls}-focused`]: this.visible,
           [`${this.className}`]: !!this.className
+        }
+      },
+      noCls () {
+        return {
+          [`${prefixCls}-dropdown-menu-item`]: true,
+          [`${prefixCls}-dropdown-menu-item-disabled`]: true
         }
       },
       showPlaceholder () {
@@ -115,6 +127,10 @@
           val = {opacity: 1}
         }
         return val
+      },
+      noLocalData () {
+        const options = this.$slots.default || []
+        return (this.childCount < 0) && options.length
       }
     },
 
@@ -132,10 +148,12 @@
           this.broadcast('WuSelectDropdown', 'destroyPopper')
         }
       },
-      inputValue () {
+      inputValue (val) {
+        this.childCount = 0
         this.$nextTick(() => {
           if (this.visible) this.broadcast('WuSelectDropdown', 'updatePopper')
         })
+        this.broadcast('WuOption', 'queryChange', val)
       }
     },
 
@@ -167,7 +185,6 @@
         this.selectedLabel = option.currentLabel
         this.selected = option
         this.inputValue = ''
-        //        if (this.showSearch) this.inputValue = this.selectedLabel
       },
 
       getOption (value) {

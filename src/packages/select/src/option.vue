@@ -1,5 +1,6 @@
 <template lang="pug">
   li.wu-select-dropdown-menu-item(
+      v-show="visible",
       unselectable="unselectable",
       :class="itemClasses",
       @click.stop="selectOptionClick"
@@ -31,7 +32,9 @@
     },
 
     data () {
-      return {}
+      return {
+        visible: true
+      }
     },
 
     computed: {
@@ -69,10 +72,18 @@
         if (!this.disabled) {
           this.dispatch('WuSelect', 'handleOptionClick', this)
         }
+      },
+      queryChange (val) {
+        const parsedQuery = val.replace(/(\^|\(|\)|\[|\]|\$|\*|\+|\.|\?|\\|\{|\}|\|)/g, '\\$1')
+        this.visible = new RegExp(parsedQuery, 'i').test(this.currentLabel)
+        if (!this.visible) {
+          this.parent.childCount--
+        }
       }
     },
 
-    created () {
+    mounted () {
+      this.$on('queryChange', this.queryChange)
       this.parent.options.push(this)
       this.parent.cachedOptions.push(this)
     }
