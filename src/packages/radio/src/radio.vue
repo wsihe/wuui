@@ -65,19 +65,13 @@
       }
     },
 
-    watch: {
-      value (val) {
-        this.currentValue = val
-      }
-    },
-
     methods: {
       change (event) {
         if (this.disabled) return
         const checked = event.target.checked
-        this.$emit('input', checked)
         this.currentValue = checked
         if (!this.isGroup) {
+          this.$emit('input', checked)
           this.$emit('on-change', checked)
         } else {
           this._radioGroup.change(this)
