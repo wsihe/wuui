@@ -2,22 +2,19 @@
   .wu-select(:class="classes", v-clickoutside="handleClose", @click="toggleSelect")
     .wu-select-selection(ref="reference")
       .wu-select-selection__rendered
-        .wu-select-selection__placeholder(unselectable="unselectable" v-show="showPlaceholder && !showSearch") {{placeholder}}
-        .wu-select-selection-selected-value(v-show="!showPlaceholder && !showSearch") {{selectedLabel}}
-        .wu-select-search.wu-select-search--inline(v-show="showSearch")
+        .wu-select-selection__placeholder(unselectable="unselectable" v-show="showPlaceholder") {{placeholder}}
+        .wu-select-selection-selected-value(v-show="showValue", :style="valStyle") {{selectedLabel}}
+        .wu-select-search.wu-select-search--inline(v-show="showInput && showSearch")
           .wu-select-search__field__wrap
             input.wu-select-search__field(
               type="text",
               ref="input",
-              :placeholder="placeholder",
-              :disabled="disabled",
+              :disabled="disabled"
               v-model="inputValue"
             )
-            span.wu-select-search__field__mirror {{inputValue}}&nbsp;
       icon.wu-select-arrow(type="down")
     wu-select-dropdown(ref="popper" v-show="visible")
       ul.wu-select-dropdown-menu
-        //wu-option
         slot
 </template>
 
@@ -65,6 +62,7 @@
 
     data () {
       return {
+        showInput: false,
         isSelect: true,
         inputValue: '',
         visible: false,
@@ -91,19 +89,38 @@
       },
       showPlaceholder () {
         let status = false
-        if (this.currentValue === '' && !this.inputValue) {
+        if (this.selectedLabel === '' && !this.inputValue) {
           status = true
         }
         return status
+      },
+      showValue () {
+        let status = false
+        if (!this.showPlaceholder && !this.inputValue) {
+          status = true
+        }
+        return status
+      },
+      valStyle () {
+        let val = {}
+        if (this.visible && this.showSearch) {
+          val = {opacity: 0.4}
+          this.showInput = true
+          this.$nextTick(() => {
+            this.$refs.input.focus()
+          })
+        } else {
+          val = {opacity: 1}
+        }
+        return val
       }
     },
 
     watch: {
       value (val) {
         this.currentValue = val
-        if (val === '') this.inputValue = ''
         this.setSelected()
-        this.$emit('change', val)
+        this.$emit('on-change', val)
       },
 
       visible (val) {
@@ -144,9 +161,11 @@
       setSelected () {
         if (this.disabled) return
         let option = this.getOption(this.value)
+        if (!option) return
         this.selectedLabel = option.currentLabel
         this.selected = option
-        if (this.showSearch) this.inputValue = this.selectedLabel
+        this.inputValue = ''
+        //        if (this.showSearch) this.inputValue = this.selectedLabel
       },
 
       getOption (value) {
@@ -164,7 +183,6 @@
 
     created () {
       this.$on('handleOptionClick', this.handleOptionSelect)
-      this.$on('setSelected', this.setSelected)
     },
 
     mounted () {

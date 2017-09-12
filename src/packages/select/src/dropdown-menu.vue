@@ -1,5 +1,5 @@
 <template lang="pug">
-  .wu-select-dropdown.wu-select-dropdown--single(:class="dropdownClasses", :style="{ minWidth: minWidth }")
+  .wu-select-dropdown(:class="dropdownClasses", :style="{ minWidth: minWidth }")
     slot
 </template>
 

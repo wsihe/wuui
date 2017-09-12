@@ -1,30 +1,25 @@
 <template lang="pug">
-  .wu-checkbox-group(:class="selectClass")
-    slot
+  li.wu-select-dropdown-menu-item-group
+    .wu-select-dropdown-menu-item-group-title {{label}}
+    ul.wu-select-dropdown-menu-item-group-list
+      slot
 </template>
 
 <script>
-  const prefixCls = 'wu-checkbox-group'
+//  const prefixCls = 'wu-select-dropdown-menu-item'
   export default {
-    name: 'WuCheckboxGroup',
+    name: 'WuOptionGroup',
 
-    componentName: 'WuCheckboxGroup',
+    componentName: 'WuOptionGroup',
 
     props: {
-      className: String,
-      size: {
+      label: {
         type: String,
         default: ''
       }
     },
 
     computed: {
-      selectClass () {
-        return {
-          [`${prefixCls}-${this.size}`]: !!this.size,
-          [`${this.className}`]: !!this.className
-        }
-      }
     }
   }
 </script>

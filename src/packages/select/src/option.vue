@@ -36,11 +36,11 @@
 
     computed: {
       parent () {
-        let result = this.$parent
-        while (!result.isSelect) {
-          result = result.$parent
+        let parent = this.$parent
+        while (!parent.isSelect) {
+          parent = parent.$parent
         }
-        return result
+        return parent
       },
 
       itemSelected () {
@@ -62,9 +62,6 @@
     },
 
     watch: {
-      currentLabel () {
-        this.dispatch('WuSelect', 'setSelected')
-      }
     },
 
     methods: {
