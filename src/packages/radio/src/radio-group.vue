@@ -24,8 +24,7 @@
     data () {
       return {
         isGroup: true,
-        currentValue: this.value,
-        radioList: []
+        currentValue: this.value
       }
     },
 
