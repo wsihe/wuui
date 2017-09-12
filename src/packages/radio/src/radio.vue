@@ -75,10 +75,10 @@
       change (event) {
         if (this.disabled) return
         const checked = event.target.checked
+        this.$emit('input', checked)
         this.currentValue = checked
         if (!this.isGroup) {
           this.$emit('on-change', checked)
-          this.$emit('input', checked)
         } else {
           this._radioGroup.change(this)
         }

@@ -47,7 +47,7 @@
         var value = data.label
         this.currentValue = value
         this.$emit('input', value)
-        this.$emit('change', value)
+        this.$emit('on-change', value)
       }
     }
   }
