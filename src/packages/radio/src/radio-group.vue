@@ -11,19 +11,44 @@
     componentName: 'WuRadioGroup',
 
     props: {
-      className: String,
+      value: {
+        type: [String, Number],
+        default: ''
+      },
       size: {
         type: String,
         default: ''
       }
     },
 
+    data () {
+      return {
+        isGroup: true,
+        currentValue: this.value,
+        radioList: []
+      }
+    },
+
     computed: {
       groupClass () {
         return {
-          [`${prefixCls}-${this.size}`]: !!this.size,
-          [`${this.className}`]: !!this.className
+          [`${prefixCls}-${this.size}`]: !!this.size
         }
+      }
+    },
+
+    watch: {
+      value (val) {
+        this.currentValue = val
+      }
+    },
+
+    methods: {
+      change (data) {
+        var value = data.label
+        this.currentValue = value
+        this.$emit('input', value)
+        this.$emit('change', value)
       }
     }
   }
