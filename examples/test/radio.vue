@@ -2,10 +2,10 @@
   .page
     h2 Radio
     .demo-content
-      wu-radio(v-model="value1") 备选项
+      wu-radio(v-model="value1", @on-change="handle") 备选项
       p {{value1}}
     .demo-content
-      wu-radio-group(v-model="value2")
+      wu-radio-group(v-model="value2", @on-change="handle2")
         wu-radio(label="a") 男
         wu-radio(label="b") 女
         wu-radio(label="c") 其他
@@ -40,6 +40,14 @@
     watch: {
     },
     methods: {
+      handle (val) {
+        console.log(val)
+        console.log(this.value1)
+      },
+      handle2 (val) {
+        console.log(val)
+        console.log(this.value2)
+      }
     }
   }
 </script>
