@@ -110,6 +110,8 @@
             this.$refs.input.focus()
           })
         } else {
+          this.inputValue = ''
+          this.showInput = false
           val = {opacity: 1}
         }
         return val
