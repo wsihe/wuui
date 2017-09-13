@@ -1,5 +1,5 @@
 <template lang="pug">
-  button.wu-btn(:class="classes", @click="handleClick")
+  button.wu-btn(:class="classes", :type="htmlType", @click="handleClick")
     Icon(class="" type="loading" v-if="loading")
     Icon(:type="icon" v-if="icon && !loading")
     span(v-if="$slots.default")
@@ -21,7 +21,6 @@ export default {
       default: 'button'
     },
     loading: Boolean,
-    className: String,
     icon: String,
     ghost: {
       type: Boolean,
@@ -49,9 +48,7 @@ export default {
         [`${prefixCls}-${sizeCls}`]: sizeCls,
         [`${prefixCls}-icon-only`]: !this.icon && !this.loading,
         [`${prefixCls}-loading`]: this.loading,
-//        [`${prefixCls}-clicked`]: this.clicked,
-        [`${prefixCls}-background-ghost`]: this.ghost,
-        [`${this.className}`]: !!this.className
+        [`${prefixCls}-background-ghost`]: this.ghost
       }
     }
   },
