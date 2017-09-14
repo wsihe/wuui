@@ -3,14 +3,16 @@
     .wu-select-selection(ref="reference")
       .wu-select-selection__rendered
         .wu-select-selection__placeholder(unselectable="unselectable" v-show="showPlaceholder") {{placeholder}}
-        .wu-select-selection-selected-value(v-show="showValue", :style="valStyle") {{selectedLabel}}
+        .wu-select-selection-selected-value(v-show="showSelectedValue", :style="valStyle") {{selectedLabel}}
         .wu-select-search.wu-select-search--inline(v-show="showInput && showSearch")
           .wu-select-search__field__wrap
             input.wu-select-search__field(
               type="text",
               ref="input",
               :disabled="disabled"
-              v-model="inputValue"
+              v-model="inputValue",
+              @keyup="debounceChange",
+              @paste="debounceChange"
             )
       icon.wu-select-arrow(type="down")
     wu-select-dropdown(ref="popper" v-show="visible")
@@ -21,6 +23,7 @@
 
 <script>
   import Emitter from 'wuui/mixins/emitter'
+  import debounce from 'lodash.debounce'
   import clickoutside from 'wuui/directives/clickoutside'
   import Icon from '../../icon/src/icon'
   import WuSelectDropdown from './dropdown-menu'
@@ -67,11 +70,15 @@
 
     data () {
       return {
+//        showSelectedValue: false,
         showInput: false,
+        valStyle: {},
         isSelect: true,
         inputValue: '',
+        query: '',
         visible: false,
         selectWidth: 0,
+        childTotalCount: 0,
         currentValue: this.value,
         selected: {},
         selectedLabel: '',
@@ -106,31 +113,33 @@
         }
         return status
       },
-      showValue () {
+      showSelectedValue () {
         let status = false
-        if (!this.showPlaceholder && !this.inputValue) {
-          status = true
+        let opacity = 1
+        if (!this.inputValue.length) {
+          if (!this.showSearch) {
+            status = true
+          } else {
+            if (this.visible) {
+              status = !this.inputValue
+              if (status) {
+                this.showInput = true
+                this.$nextTick(() => {
+                  this.$refs.input.focus()
+                })
+                opacity = 0.4
+              }
+            } else {
+              status = true
+            }
+          }
         }
+        this.valStyle = {opacity}
         return status
-      },
-      valStyle () {
-        let val = {}
-        if (this.visible && this.showSearch) {
-          val = {opacity: 0.4}
-          this.showInput = true
-          this.$nextTick(() => {
-            this.$refs.input.focus()
-          })
-        } else {
-          this.inputValue = ''
-          this.showInput = false
-          val = {opacity: 1}
-        }
-        return val
       },
       noLocalData () {
         const options = this.$slots.default || []
-        return (this.childCount < 0) && options.length
+        return (this.childCount === -this.childTotalCount) && options.length
       }
     },
 
@@ -148,7 +157,7 @@
           this.broadcast('WuSelectDropdown', 'destroyPopper')
         }
       },
-      inputValue (val) {
+      query (val) {
         this.childCount = 0
         this.$nextTick(() => {
           if (this.visible) this.broadcast('WuSelectDropdown', 'updatePopper')
@@ -171,6 +180,7 @@
 
       getSelectWidth () {
         this.selectWidth = this.$refs.reference.clientWidth
+        this.childTotalCount = this.cachedOptions.length
       },
 
       handleOptionSelect (option) {
@@ -183,6 +193,7 @@
         let option = this.getOption(this.value)
         if (!option) return
         this.selectedLabel = option.currentLabel
+        this.showSelectedValue = true
         this.selected = option
         this.inputValue = ''
       },
@@ -201,6 +212,10 @@
     },
 
     created () {
+      this.debounceChange = debounce(() => {
+        this.showSelectedValue = false
+        this.query = this.inputValue
+      }, 100, { leading: true })
       this.$on('handleOptionClick', this.handleOptionSelect)
     },
 

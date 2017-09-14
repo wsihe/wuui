@@ -58,8 +58,7 @@
         return {
           [`${prefixCls}-selected`]: this.itemSelected,
           [`${prefixCls}-disabled`]: !!this.size,
-          [`${prefixCls}-active`]: this.itemSelected,
-          [`${this.className}`]: !!this.className
+          [`${prefixCls}-active`]: this.itemSelected
         }
       }
     },
@@ -78,6 +77,8 @@
         this.visible = new RegExp(parsedQuery, 'i').test(this.currentLabel)
         if (!this.visible) {
           this.parent.childCount--
+        } else {
+          this.parent.childCount++
         }
       }
     },

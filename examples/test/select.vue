@@ -12,12 +12,10 @@
         wu-option(value="北京")
         wu-option(value="上海")
     .demo-content
-      wu-select(v-model="value3" placeholder="搜索组件...", showSearch)
-        wu-option(value="广州") 广州
-        wu-option(value="北京") 北京
-        wu-option(value="上海") 上海
+      wu-select(v-model="value3" placeholder="搜索城市...", showSearch)
+        wu-option(:value="city.value", :label="city.label", :key="city.value" v-for="city in cityList")
     .demo-content
-      wu-select(v-model="value2" placeholder="搜索组件...", showSearch)
+      wu-select(v-model="value2" placeholder="搜索城市...", showSearch)
         wu-option(value="广州")
         wu-option(value="北京")
         wu-option(value="上海")
@@ -33,7 +31,33 @@
         value: '',
         value1: '北京',
         value2: '广州',
-        value3: ''
+        value3: '',
+        cityList: [
+          {
+            value: 'beijing',
+            label: '北京市'
+          },
+          {
+            value: 'shanghai',
+            label: '上海市'
+          },
+          {
+            value: 'shenzhen',
+            label: '深圳市'
+          },
+          {
+            value: 'hangzhou',
+            label: '杭州市'
+          },
+          {
+            value: 'nanjing',
+            label: '南京市'
+          },
+          {
+            value: 'chongqing',
+            label: '重庆市'
+          }
+        ]
       }
     },
     watch: {
