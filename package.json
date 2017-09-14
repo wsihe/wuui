@@ -25,6 +25,7 @@
   "main": "dist/wuui.js",
   "license": "MIT",
   "dependencies": {
+    "lodash.debounce": "^4.0.8",
     "popper.js": "^0.6.4",
     "vue": "^2.2.2"
   },
