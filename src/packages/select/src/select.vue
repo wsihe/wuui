@@ -2,8 +2,8 @@
   .wu-select(:class="classes", v-clickoutside="handleClose", @click="toggleSelect")
     .wu-select-selection(ref="reference")
       .wu-select-selection__rendered
-        .wu-select-selection__placeholder(unselectable="unselectable" v-show="showPlaceholder") {{placeholder}}
-        .wu-select-selection-selected-value(v-show="showSelectedValue", :style="valStyle") {{selectedLabel}}
+        .wu-select-selection__placeholder(unselectable="unselectable" v-show="showPlaceholder  && !isInput") {{placeholder}}
+        .wu-select-selection-selected-value(v-show="showSelectedValue && !isInput", :style="valStyle") {{selectedLabel}}
         .wu-select-search.wu-select-search--inline(v-show="showInput && showSearch")
           .wu-select-search__field__wrap
             input.wu-select-search__field(
@@ -11,7 +11,8 @@
               ref="input",
               :disabled="disabled"
               v-model="inputValue",
-              @keyup="debounceChange",
+              @keydown="debounceChange",
+              @input="debounceChange",
               @paste="debounceChange"
             )
       icon.wu-select-arrow(type="down")
@@ -70,7 +71,7 @@
 
     data () {
       return {
-//        showSelectedValue: false,
+        isInput: false,
         showInput: false,
         valStyle: {},
         isSelect: true,
@@ -154,6 +155,8 @@
         if (val) {
           this.broadcast('WuSelectDropdown', 'updatePopper')
         } else {
+          this.isInput = false
+          this.inputValue = this.query = ''
           this.broadcast('WuSelectDropdown', 'destroyPopper')
         }
       },
@@ -212,8 +215,12 @@
     },
 
     created () {
-      this.debounceChange = debounce(() => {
-        this.showSelectedValue = false
+      this.debounceChange = debounce((e) => {
+        if (e.target.value) {
+          this.isInput = true
+        } else {
+          this.isInput = false
+        }
         this.query = this.inputValue
       }, 100, { leading: true })
       this.$on('handleOptionClick', this.handleOptionSelect)
