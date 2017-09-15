@@ -17,7 +17,7 @@
             )
       icon.wu-select-arrow(type="down" v-if="!remote && !remoteMethod")
     wu-select-dropdown(ref="popper" v-show="visible && showDrop")
-      ul.wu-select-dropdown-menus
+      ul.wu-select-dropdown-menu
         slot
         li(:class="noCls", v-show="noFoundData") {{noDataText}}
         li(:class="loadingCls", v-show="loading")
@@ -226,7 +226,9 @@
 
       getSelectWidth () {
         this.selectWidth = this.$refs.reference.clientWidth
-        this.childTotalCount = this.cachedOptions.length
+        this.$nextTick(() => {
+          this.childTotalCount = this.cachedOptions.length
+        })
       },
 
       handleOptionSelect (option) {

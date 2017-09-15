@@ -83,7 +83,7 @@
       }
     },
 
-    mounted () {
+    created () {
       this.$on('queryChange', this.queryChange)
       this.parent.options.push(this)
       this.parent.cachedOptions.push(this)

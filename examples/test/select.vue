@@ -25,9 +25,16 @@
     .demo-content
       wu-select(v-model="value4" placeholder="搜索城市...", showSearch, remote, :remote-method="remoteMethod", :loading="loading")
         wu-option(:value="item.value", :label="item.value", :key="index", v-for="(item, index) in options")
+    .demo-content
+      wu-select(
+        v-model="value"
+        placeholder="搜索组件..."
+        showSearch)
+        wu-option(:value="item.path", :label="item.name", :key="item.path", v-for="(item, index) in components")
 </template>
 
 <script>
+  import list from '@/i18n/nav.config.json'
   export default {
     data () {
       return {
@@ -37,6 +44,7 @@
         value3: '',
         value4: '',
         loading: false,
+        components: [],
         cityList: [
           {
             value: 'beijing',
@@ -85,7 +93,21 @@
         } else {
           this.options = []
         }
+      },
+      handleMenuData (menus) {
+        let comList = []
+        menus.menuItem.forEach((item1) => {
+          if (item1.icon !== 'icon-start') {
+            item1.menuItem.forEach((item2) => {
+              comList.push(item2)
+            })
+          }
+        })
+        return comList
       }
+    },
+    mounted () {
+      this.components = this.handleMenuData(list)
     }
   }
 </script>
