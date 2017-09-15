@@ -19,10 +19,9 @@
     wu-select-dropdown(ref="popper" v-show="visible && showDrop")
       ul.wu-select-dropdown-menus
         slot
-        li(:class="noCls", v-show="noLocalData") {{noDataText}}
+        li(:class="noCls", v-show="noFoundData") {{noDataText}}
         li(:class="loadingCls", v-show="loading")
           icon(type="loading-3-quarters" spin)
-          | 加载中
 </template>
 
 <script>
@@ -78,6 +77,10 @@
         type: Function
       },
       loading: {
+        type: Boolean,
+        default: false
+      },
+      autoComplete: {
         type: Boolean,
         default: false
       }
@@ -166,9 +169,11 @@
         this.valStyle = {opacity}
         return status
       },
-      noLocalData () {
+      noFoundData () {
         const options = this.$slots.default || []
-        return (this.childCount === -this.childTotalCount && !this.remote) || (this.remote && !this.loading && !options.length)
+        let stauts = (this.childCount === -this.childTotalCount && !this.remote) ||
+          (this.remote && !this.loading && !options.length && !this.autoComplete)
+        return stauts
       }
     },
 
