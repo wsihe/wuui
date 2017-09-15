@@ -15,11 +15,14 @@
               @input="debounceChange",
               @paste="debounceChange"
             )
-      icon.wu-select-arrow(type="down")
-    wu-select-dropdown(ref="popper" v-show="visible")
-      ul.wu-select-dropdown-menu
+      icon.wu-select-arrow(type="down" v-if="!remote && !remoteMethod")
+    wu-select-dropdown(ref="popper" v-show="visible && showDrop")
+      ul.wu-select-dropdown-menus
         slot
         li(:class="noCls", v-show="noLocalData") {{noDataText}}
+        li(:class="loadingCls", v-show="loading")
+          icon(type="loading-3-quarters" spin)
+          | 加载中
 </template>
 
 <script>
@@ -66,7 +69,18 @@
         type: [Boolean, String],
         default: false
       },
-      placeholder: String
+      placeholder: String,
+      remote: {
+        type: Boolean,
+        default: false
+      },
+      remoteMethod: {
+        type: Function
+      },
+      loading: {
+        type: Boolean,
+        default: false
+      }
     },
 
     data () {
@@ -107,6 +121,20 @@
           [`${prefixCls}-dropdown-menu-item-disabled`]: true
         }
       },
+      loadingCls () {
+        return {
+          [`${prefixCls}-dropdown-menu-item`]: true,
+          [`${prefixCls}-loading`]: true
+        }
+      },
+      showDrop () {
+        let status = true
+        const options = this.$slots.default || []
+        if (!this.loading && this.remote && this.query === '' && !options.length) {
+          status = false
+        }
+        return status
+      },
       showPlaceholder () {
         let status = false
         if (this.selectedLabel === '' && !this.inputValue) {
@@ -140,7 +168,7 @@
       },
       noLocalData () {
         const options = this.$slots.default || []
-        return (this.childCount === -this.childTotalCount) && options.length
+        return (this.childCount === -this.childTotalCount && !this.remote) || (this.remote && !this.loading && !options.length)
       }
     },
 
@@ -153,6 +181,12 @@
 
       visible (val) {
         if (val) {
+          if (this.remote) {
+            const options = this.$slots.default || []
+            if (this.query !== '' && !options.length) {
+              this.remoteMethod(this.query)
+            }
+          }
           this.broadcast('WuSelectDropdown', 'updatePopper')
         } else {
           this.isInput = false
@@ -161,11 +195,15 @@
         }
       },
       query (val) {
-        this.childCount = 0
         this.$nextTick(() => {
           if (this.visible) this.broadcast('WuSelectDropdown', 'updatePopper')
         })
-        this.broadcast('WuOption', 'queryChange', val)
+        if (!this.remote && !this.remoteMethod) {
+          this.childCount = 0
+          this.broadcast('WuOption', 'queryChange', val)
+        } else {
+          this.remoteMethod(val)
+        }
       }
     },
 
@@ -196,7 +234,6 @@
         let option = this.getOption(this.value)
         if (!option) return
         this.selectedLabel = option.currentLabel
-        this.showSelectedValue = true
         this.selected = option
         this.inputValue = ''
       },

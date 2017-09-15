@@ -22,6 +22,9 @@
     .demo-content
       wu-select(disabled)
         wu-option(value="广州")
+    .demo-content
+      wu-select(v-model="value4" placeholder="搜索城市...", showSearch, remote, :remote-method="remoteMethod", :loading="loading")
+        wu-option(:value="item.value", :label="item.value", :key="index", v-for="(item, index) in options")
 </template>
 
 <script>
@@ -32,6 +35,8 @@
         value1: '北京',
         value2: '广州',
         value3: '',
+        value4: '',
+        loading: false,
         cityList: [
           {
             value: 'beijing',
@@ -57,12 +62,30 @@
             value: 'chongqing',
             label: '重庆市'
           }
-        ]
+        ],
+        options: []
       }
     },
     watch: {
     },
     methods: {
+      remoteMethod (val) {
+        if (val !== '') {
+          this.loading = true
+          setTimeout(() => {
+            this.loading = false
+            const list = this.cityList.map(item => {
+              return {
+                value: item.value,
+                label: item.value
+              }
+            })
+            this.options = list.filter(item => item.label.toLowerCase().indexOf(val.toLowerCase()) > -1)
+          }, 1000)
+        } else {
+          this.options = []
+        }
+      }
     }
   }
 </script>
