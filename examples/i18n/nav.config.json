@@ -71,6 +71,10 @@
         {
           "name": "Message 消息",
           "path": "message"
+        },
+        {
+          "name": "Spin 加载中",
+          "path": "spin"
         }
       ]
     },
