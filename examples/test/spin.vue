@@ -15,21 +15,29 @@
       wu-spin(v-model="value")
         .example
           p content of spin
+    .demo-content
+      wu-switch(@on-change="handle2")
+      wu-spin(v-model="value2", :delay="800")
+        .example
+          p content of spin delay
 </template>
 
 <script>
   export default {
     data () {
       return {
-        value: false
+        value: false,
+        value2: false
       }
     },
     watch: {
     },
     methods: {
       handle (val) {
-        console.log(val)
         this.value = val
+      },
+      handle2 (val) {
+        this.value2 = val
       }
     }
   }
