@@ -1,3 +1,3 @@
-import WuSpin from './src/spin.vue'
+import WuSpin from './src/spin'
 
 export default WuSpin
