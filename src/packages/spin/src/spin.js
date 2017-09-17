@@ -20,12 +20,17 @@ export default {
     tip: {
       type: String,
       default: ''
+    },
+    delay: {
+      type: Number,
+      default: 0
     }
   },
 
   data () {
     return {
-      currentValue: this.value
+      currentValue: this.value,
+      delayTimeout: null
     }
   },
 
@@ -47,8 +52,14 @@ export default {
 
   watch: {
     value (val) {
-      this.currentValue = val
-      this.change(val)
+      if (val && this.delay) {
+        if (this.delayTimeout) {
+          clearTimeout(this.delayTimeout)
+        }
+        this.delayTimeout = setTimeout(() => this.change(val), this.delay)
+      } else {
+        this.change(val)
+      }
     }
   },
 
@@ -84,8 +95,14 @@ export default {
 
   methods: {
     change (val) {
+      this.currentValue = val
       this.$emit('input', val)
       this.$emit('on-change', val)
+    }
+  },
+  destroyed () {
+    if (this.delayTimeout) {
+      clearTimeout(this.delayTimeout)
     }
   }
 }
