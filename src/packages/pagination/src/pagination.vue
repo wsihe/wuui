@@ -12,7 +12,7 @@
     li.wu-pagination-options(v-if="showJumper")
       .wu-pagination-options-quick-jumper
         | 前往
-        input(type="text")
+        input(type="text", @change="handleJumperChange")
         | 页
 </template>
 
@@ -149,6 +149,10 @@
           this.$emit('update:current', val)
           this.$emit('on-change', val)
         }
+      },
+      handleJumperChange (event) {
+        this.currentPage = this.getValidCurrentPage(event.target.value)
+        event.target.value = ''
       }
     },
 
