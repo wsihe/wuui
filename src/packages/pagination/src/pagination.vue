@@ -1,5 +1,6 @@
 <template lang="pug">
   ul.wu-pagination(:class="wrapCls")
+    li.wu-pagination-total-text(v-if="showTotal") 共 {{total}} 条
     li.wu-pagination-options(v-if="showChanger")
       wu-select(class="wu-pagination-options-size-changer" v-model="currentPageSize")
         wu-option(:value="page",:label="`${page}条/页`", :key="index", v-for="(page, index) in pageSizeOptions")
@@ -58,6 +59,10 @@
         default: false
       },
       showJumper: {
+        type: Boolean,
+        default: false
+      },
+      showTotal: {
         type: Boolean,
         default: false
       }

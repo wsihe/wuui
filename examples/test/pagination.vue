@@ -10,6 +10,8 @@
     .demo-content
       wu-pagination(:total="100", show-changer)
     .demo-content
+      wu-pagination(:total="100", show-changer, show-total)
+    .demo-content
       wu-pagination(:total="100", show-jumper)
     .demo-content
       wu-pagination(:total="100", @on-size-change="changeSize", show-changer, show-jumper)
