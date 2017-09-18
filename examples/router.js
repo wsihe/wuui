@@ -16,6 +16,7 @@ import pagination from '@/test/pagination'
 import dropdown from '@/test/dropdown'
 import tabs from '@/test/tabs'
 import spin from '@/test/spin'
+import menu from '@/test/menu'
 
 Vue.use(Router)
 
@@ -100,6 +101,11 @@ const router = new Router({
         path: 'spin',
         name: 'component-spin',
         component: spin
+      },
+      {
+        path: 'menu',
+        name: 'component-menu',
+        component: menu
       }]
   },
   {

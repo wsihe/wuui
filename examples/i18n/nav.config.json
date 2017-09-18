@@ -84,6 +84,10 @@
       "path": null,
       "menuItem": [
         {
+          "name": "Menu 导航菜单",
+          "path": "menu"
+        },
+        {
           "name": "Dropdown 下拉菜单",
           "path": "dropdown"
         },
