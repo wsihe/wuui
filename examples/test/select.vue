@@ -112,7 +112,7 @@
   }
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
   .demo-content .wu-select
     width 200px
 </style>
