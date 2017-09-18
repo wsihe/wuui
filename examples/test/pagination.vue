@@ -7,6 +7,12 @@
       wu-pagination(:total="100")
     .demo-content
       wu-pagination(:total="100", size="small")
+    .demo-content
+      wu-pagination(:total="100", show-changer)
+    .demo-content
+      wu-pagination(:total="100", show-jumper)
+    .demo-content
+      wu-pagination(:total="100", @on-size-change="changeSize", show-changer, show-jumper)
 </template>
 
 <script>
@@ -22,6 +28,9 @@
       }
     },
     methods: {
+      changeSize (size) {
+        console.log(size)
+      }
     }
   }
 </script>

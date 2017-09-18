@@ -1,14 +1,24 @@
 <template lang="pug">
   ul.wu-pagination(:class="wrapCls")
+    li.wu-pagination-options(v-if="showChanger")
+      wu-select(class="wu-pagination-options-size-changer" v-model="currentPageSize")
+        wu-option(:value="page",:label="`${page}条/页`", :key="index", v-for="(page, index) in pageSizeOptions")
     li.wu-pagination-prev(:class="{[prefixCls + '-disabled']: currentPage <= 1}", @click="onPrevClick")
       a.wu-pagination-item-link
     wu-pager(:current-page="currentPage", :page-count="pageCount", @change="handleCurrentChange")
     li.wu-pagination-next(:class="{[prefixCls + '-disabled']: currentPage === pageCount}", @click="onNextClick")
       a.wu-pagination-item-link
+    li.wu-pagination-options(v-if="showJumper")
+      .wu-pagination-options-quick-jumper
+        | 前往
+        input(type="text")
+        | 页
 </template>
 
 <script>
   import WuPager from './pager'
+  import WuSelect from '../../select/src/select'
+  import WuOption from '../../select/src/option'
 
   const prefixCls = 'wu-pagination'
   export default {
@@ -17,7 +27,11 @@
 
     componentName: 'WuPagination',
 
-    components: {WuPager},
+    components: {
+      WuOption,
+      WuSelect,
+      WuPager
+    },
 
     props: {
       total: Number,
@@ -38,6 +52,14 @@
         default () {
           return [10, 20, 30, 40]
         }
+      },
+      showChanger: {
+        type: Boolean,
+        default: false
+      },
+      showJumper: {
+        type: Boolean,
+        default: false
       }
     },
 
@@ -66,6 +88,13 @@
       },
       pageSize (val) {
         this.currentPageSize = val
+      },
+      currentPageSize (val) {
+        this.$emit('on-size-change', val)
+        if (this.currentPage > this.pageCount) {
+          this.currentPage = this.pageCount
+        }
+        this.changePage(this.currentPage)
       }
     },
 
