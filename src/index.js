@@ -26,6 +26,10 @@ import TabPane from './packages/tabs-pane'
 import Collapse from './packages/collapse'
 import CollapseItem from './packages/collapse-item'
 import Spin from './packages/spin'
+import Menu from './packages/menu'
+import Submenu from './packages/submenu'
+import MenuItem from './packages/menu-item'
+import MenuItemGroup from './packages/menu-item-group'
 
 const components = [
   Row,
@@ -53,7 +57,11 @@ const components = [
   TabPane,
   Collapse,
   CollapseItem,
-  Spin
+  Spin,
+  Menu,
+  Submenu,
+  MenuItem,
+  MenuItemGroup
 ]
 
 const install = function (Vue, opts = {}) {
@@ -96,6 +104,10 @@ export default {
   Collapse,
   CollapseItem,
   Spin,
+  Menu,
+  Submenu,
+  MenuItem,
+  MenuItemGroup,
   Message,
   install
 }
