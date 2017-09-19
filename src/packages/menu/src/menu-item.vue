@@ -1,5 +1,5 @@
 <template lang="pug">
-  .wu-xx
+  li.wu-menu-item(:class="itemCls")
     slot
 </template>
 
@@ -14,6 +14,11 @@
 
     data () {
       return {
+      }
+    },
+
+    computed: {
+      itemCls () {
       }
     }
   }
