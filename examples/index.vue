@@ -4,7 +4,7 @@
     .main__content.clearfix
       wu-row
         wu-col(:span="4")
-          side-bar(v-on:data="inactive")
+          side-bar
         wu-col(:span="20")
           .main__container
             router-view
@@ -12,7 +12,6 @@
 </template>
 
 <script>
-  import $ from 'jquery'
   import mainNav from '@/components/base/head'
   import sideBar from '@/components/base/sidebar'
   import mainFooter from '@/components/base/footer'
@@ -31,11 +30,6 @@
       // console.log(this.show)
     },
     methods: {
-      inactive (data) {
-        let width = data
-        $('.main__container').animate({left: width + 'px'})
-        $('.sidebar').animate({width: width + 'px'})
-      }
     }
   }
 </script>
