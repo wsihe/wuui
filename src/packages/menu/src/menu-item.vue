@@ -10,6 +10,8 @@
     componentName: 'WuMenuItem',
 
     props: {
+      disabled: Boolean,
+      name: String
     },
 
     data () {

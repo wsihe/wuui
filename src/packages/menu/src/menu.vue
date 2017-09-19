@@ -18,7 +18,8 @@
       theme: {
         type: String,
         default: 'light'
-      }
+      },
+      name: String
     },
 
     data () {
