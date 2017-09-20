@@ -18,6 +18,7 @@
 
     data () {
       return {
+        isGroup: true
       }
     }
   }

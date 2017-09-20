@@ -1,6 +1,6 @@
 <template lang="pug">
   .wu-menu-submenu(:class="submenuCls")
-    .wu-menu-submenu-title(ref="trigger")
+    .wu-menu-submenu-title(ref="trigger", :style="style")
       span
         slot(name="title")
     ul.wu-menu.wu-menu-sub(:class="menuCls" v-show="visible")
@@ -22,7 +22,8 @@
       return {
         timeout: null,
         mode: this.$parent.mode,
-        visible: false
+        visible: false,
+        isSubmenu: true
       }
     },
 
@@ -43,6 +44,23 @@
         return {
           [`wu-menu-${subMode}`]: true
         }
+      },
+
+      inlineIndent () {
+        return this.$parent.inlineIndent
+      },
+
+      level () {
+        return this.$parent.level + 1
+      },
+
+      style () {
+        let paddingLeft
+        if (this.mode !== 'inline' || !this.$parent.isSubmenu) {
+          return
+        }
+        paddingLeft = this.inlineIndent * this.$parent.level
+        return {paddingLeft: `${paddingLeft}px`}
       }
     },
 

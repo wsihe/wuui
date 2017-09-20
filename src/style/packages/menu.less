@@ -81,13 +81,13 @@
 
   &-item:hover,
   &-item-active,
-  &:not(@{menu-prefix-cls}-inline) &-submenu-open,
+  &:not(.@{menu-prefix-cls}-inline) &-submenu-open,
   &-submenu-active,
   &-submenu-title:hover {
     color: @primary-color;
   }
 
-  &:not(@{menu-prefix-cls}-inline) &-submenu-open {
+  &:not(.@{menu-prefix-cls}-inline) &-submenu-open {
     z-index: @zindex-dropdown;
   }
 
@@ -110,7 +110,7 @@
     }
   }
 
-  &:not(@{menu-prefix-cls}-horizontal) &-item-selected {
+  &:not(.@{menu-prefix-cls}-horizontal) &-item-selected {
     background-color: @item-active-bg;
   }
 
@@ -472,7 +472,7 @@
   &-dark &-item:hover,
   &-dark &-item-active,
   &-dark &-submenu-active,
-  &-dark:not(@{menu-prefix-cls}-inline) &-submenu-open,
+  &-dark:not(.@{menu-prefix-cls}-inline) &-submenu-open,
   &-dark &-submenu-selected,
   &-dark &-submenu:hover,
   &-dark &-submenu-title:hover {

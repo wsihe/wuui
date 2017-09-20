@@ -19,11 +19,16 @@
         type: String,
         default: 'light'
       },
-      name: String
+      name: String,
+      inlineIndent: {
+        type: Number,
+        default: 24
+      }
     },
 
     data () {
       return {
+        level: 1
       }
     },
 
