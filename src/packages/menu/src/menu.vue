@@ -23,8 +23,10 @@
         type: Number,
         default: 24
       },
-      selectedName: Array,
-      openNames: Array
+      selectedName: [String, Number],
+      openNames: Array,
+      accordion: Boolean,
+      inlineCollapsed: Boolean
     },
 
     data () {
@@ -52,15 +54,23 @@
         this.selected = name
         this.$emit('on-click', name)
       },
-      handleClickSubmenu (item) {
-        let openGroup = this.openGroup.slice(0)
-        let index = openGroup.indexOf(item.name)
-        if (index > -1) {
-          openGroup.splice(index, 1)
+      handleClickSubmenu (submenu) {
+        if (this.accordion) {
+          this.setActiveSubmenu(
+            (this.openGroup[0] || this.openGroup[0] === 0) &&
+              this.openGroup[0] === submenu.name
+              ? '' : submenu.name
+          )
         } else {
-          openGroup.push(item.name)
+          let openGroup = this.openGroup.slice(0)
+          let index = openGroup.indexOf(submenu.name)
+          if (index > -1) {
+            openGroup.splice(index, 1)
+          } else {
+            openGroup.push(submenu.name)
+          }
+          this.setActiveSubmenu(openGroup)
         }
-        this.setActiveSubmenu(openGroup)
       },
       setActiveSubmenu (openGroup) {
         openGroup = [].concat(openGroup)
@@ -71,14 +81,22 @@
         this.openGroup.splice(this.openGroup.indexOf(name), 1)
       },
       addSubmenu (submenu) {
-        this.submenuNames.push(submenu)
+        this.submenuNames.push(submenu.name)
       },
       addItem (item) {
         this.items.push(item)
+      },
+      initDefaultNames () {
+        if (this.inlineCollapsed) {
+          this.$nextTick(() => {
+            this.openGroup = this.submenuNames
+          })
+        }
       }
     },
 
     created () {
+      this.initDefaultNames()
       this.$on('submenu-click', this.handleClickSubmenu)
       this.$on('item-click', this.handleClickItem)
     }
