@@ -8,30 +8,42 @@
 </template>
 
 <script>
+  import Emitter from 'wuui/mixins/emitter'
   const prefixCls = 'wu-menu-submenu'
   export default {
     name: 'WuSubmenu',
 
     componentName: 'WuSubmenu',
 
+    mixins: [Emitter],
+
     props: {
-      disabled: Boolean
+      disabled: Boolean,
+      name: String
     },
 
     data () {
       return {
         timeout: null,
         mode: this.$parent.mode,
-        visible: false,
-        isSubmenu: true
+        isSubmenu: true,
+        items: []
       }
     },
 
     computed: {
+      rootMenu () {
+        let parent = this.$parent
+        while (parent.isSubmenu) {
+          parent = parent.$parent
+        }
+        return parent
+      },
       submenuCls () {
         return {
           [`${prefixCls}-${this.mode}`]: !!this.mode,
-          [`${prefixCls}-open`]: this.visible
+          [`${prefixCls}-open`]: this.visible,
+          [`${prefixCls}-selected`]: this.selected
         }
       },
       menuCls () {
@@ -56,11 +68,24 @@
 
       style () {
         let paddingLeft
-        if (this.mode !== 'inline' || !this.$parent.isSubmenu) {
+        if (this.mode !== 'inline') {
           return
         }
         paddingLeft = this.inlineIndent * this.$parent.level
         return {paddingLeft: `${paddingLeft}px`}
+      },
+
+      visible () {
+        return this.rootMenu.openGroup.indexOf(this.name) > -1
+      },
+
+      selected () {
+        let selected = false
+        if (this.mode !== 'inline') {
+          const name = this.items.find(item => item.selected === true)
+          if (name) selected = true
+        }
+        return selected
       }
     },
 
@@ -68,13 +93,13 @@
       show () {
         clearTimeout(this.timeout)
         this.timeout = setTimeout(() => {
-          this.visible = true
+          this.rootMenu.setActiveSubmenu(this.name)
         }, 300)
       },
       hide () {
         clearTimeout(this.timeout)
         this.timeout = setTimeout(() => {
-          this.visible = false
+          this.rootMenu.removeActiveSubmenu(this.name)
         }, 300)
       },
       initEvent () {
@@ -98,9 +123,17 @@
       },
       toggleClick () {
         if (this.disabled) return
-        this.visible = !this.visible
+        this.dispatch('WuMenu', 'submenu-click', this)
+      },
+      addItem (item) {
+        this.items.push(item)
       }
     },
+
+    created () {
+      this.rootMenu.addSubmenu(this)
+    },
+
     mounted () {
       this.initEvent()
     }

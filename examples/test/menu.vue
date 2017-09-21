@@ -3,52 +3,61 @@
     h2 menu
     .demo-content
       wu-menu(mode="horizontal")
-        wu-menu-item
+        wu-menu-item(name="1")
           icon(type="appstore")
           | Navigation One
-        wu-menu-item Navigation Two
-        wu-submenu
+        wu-menu-item(name="2") Navigation Two
+        wu-submenu(name="sub1")
           template(slot="title") Navigation There
-          wu-menu-item Navigation sub One
-          wu-menu-item Navigation sub Two
-        wu-submenu
+          wu-menu-item(name="3") Navigation sub One
+          wu-menu-item(name="4") Navigation sub Two
+        wu-submenu(name="sub2")
           template(slot="title")  Navigation Four
           wu-item-group
             template(slot="title") item 1
-            wu-menu-item Navigation sub One
-            wu-menu-item Navigation sub Two
+            wu-menu-item(name="5") Navigation sub One
+            wu-menu-item(name="6") Navigation sub Two
           wu-item-group
             template(slot="title") item 2
-            wu-menu-item Navigation sub One
-            wu-menu-item Navigation sub Two
-        wu-menu-item
+            wu-menu-item(name="7") Navigation sub One
+            wu-menu-item(name="8") Navigation sub Two
+        wu-menu-item(name="9")
           a(href="https://wuui.github.io/" target="_blank") Navigation Five
     .demo-content
       wu-menu(mode="inline", :style="{width:'200px'}")
-        wu-submenu
-          template(slot="title")  Navigation One
+        wu-menu-item(name="0")
+          icon(type="pie-chart")
+          | Navigation Zero
+        wu-submenu(name="sub1")
+          template(slot="title")
+            icon(type="appstore")
+            | Navigation One
           wu-item-group
             template(slot="title") item 1
-            wu-menu-item Option 1
-            wu-menu-item Option 2
+            wu-menu-item(name="1") Option 1
+            wu-menu-item(name="2") Option 2
           wu-item-group
             template(slot="title") item 2
-            wu-menu-item Option 3
-            wu-menu-item Option 4
-        wu-submenu
-          template(slot="title") Navigation Two
-          wu-menu-item Option 5
-          wu-menu-item Option 6
-          wu-submenu
+            wu-menu-item(name="3") Option 3
+            wu-menu-item(name="4") Option 4
+        wu-submenu(name="sub2")
+          template(slot="title")
+            icon(type="desktop")
+            | Navigation Two
+          wu-menu-item(name="5") Option 5
+          wu-menu-item(name="6") Option 6
+          wu-submenu(name="sub3")
             template(slot="title") submenu
-            wu-menu-item Option 7
-            wu-menu-item Option 8
-        wu-submenu
-          template(slot="title") Navigation There
-          wu-menu-item Option 9
-          wu-menu-item Option 10
-          wu-menu-item Option 11
-          wu-menu-item Option 12
+            wu-menu-item(name="7") Option 7
+            wu-menu-item(name="8") Option 8
+        wu-submenu(name="sub4")
+          template(slot="title")
+            icon(type="line-chart")
+            | Navigation There
+          wu-menu-item(name="9") Option 9
+          wu-menu-item(name="10") Option 10
+          wu-menu-item(name="11") Option 11
+          wu-menu-item(name="12") Option 12
 </template>
 
 <script>

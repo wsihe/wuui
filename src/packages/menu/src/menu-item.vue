@@ -20,7 +20,6 @@
 
     data () {
       return {
-        selected: false
       }
     },
 
@@ -31,6 +30,16 @@
           parent = parent.$parent
         }
         return parent
+      },
+      rootMenu () {
+        let parent = this.parent
+        while (parent.isSubmenu) {
+          parent = parent.rootMenu
+        }
+        return parent
+      },
+      selected () {
+        return this.name === this.rootMenu.selected
       },
       itemCls () {
         return {
@@ -50,9 +59,13 @@
 
     methods: {
       handleClick () {
-        this.selected = true
-        this.dispatch('wuMenu', 'handle-item-click', this)
+        if (this.disabled) return
+        this.dispatch('WuMenu', 'item-click', this)
       }
+    },
+
+    created () {
+      this.parent.addItem(this)
     }
   }
 </script>
