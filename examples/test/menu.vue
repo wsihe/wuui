@@ -58,6 +58,41 @@
           wu-menu-item(name="10") Option 10
           wu-menu-item(name="11") Option 11
           wu-menu-item(name="12") Option 12
+    .demo-content
+      wu-menu(theme="dark", mode="inline", :style="{width:'200px'}", selected-name="1", :open-names="['sub1']")
+        wu-menu-item(name="0")
+          icon(type="pie-chart")
+          | Navigation Zero
+        wu-submenu(name="sub1")
+          template(slot="title")
+            icon(type="appstore")
+            | Navigation One
+          wu-item-group
+            template(slot="title") item 1
+            wu-menu-item(name="1") Option 1
+            wu-menu-item(name="2") Option 2
+          wu-item-group
+            template(slot="title") item 2
+            wu-menu-item(name="3") Option 3
+            wu-menu-item(name="4") Option 4
+        wu-submenu(name="sub2")
+          template(slot="title")
+            icon(type="desktop")
+            | Navigation Two
+          wu-menu-item(name="5") Option 5
+          wu-menu-item(name="6") Option 6
+          wu-submenu(name="sub3")
+            template(slot="title") submenu
+            wu-menu-item(name="7") Option 7
+            wu-menu-item(name="8") Option 8
+        wu-submenu(name="sub4")
+          template(slot="title")
+            icon(type="line-chart")
+            | Navigation There
+          wu-menu-item(name="9") Option 9
+          wu-menu-item(name="10") Option 10
+          wu-menu-item(name="11") Option 11
+          wu-menu-item(name="12") Option 12
 </template>
 
 <script>
