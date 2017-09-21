@@ -24,7 +24,7 @@
         wu-menu-item(name="9")
           a(href="https://wuui.github.io/" target="_blank") Navigation Five
     .demo-content
-      wu-menu(mode="inline", :style="{width:'200px'}")
+      wu-menu(mode="inline", :style="{width:'200px'}" accordion)
         wu-menu-item(name="0")
           icon(type="pie-chart")
           | Navigation Zero
@@ -59,7 +59,7 @@
           wu-menu-item(name="11") Option 11
           wu-menu-item(name="12") Option 12
     .demo-content
-      wu-menu(theme="dark", mode="inline", :style="{width:'200px'}", selected-name="1", :open-names="['sub1']")
+      wu-menu(theme="dark",mode="inline", :style="{width:'200px'}", selected-name="1", :open-names="['sub1']")
         wu-menu-item(name="0")
           icon(type="pie-chart")
           | Navigation Zero
