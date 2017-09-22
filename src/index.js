@@ -30,6 +30,8 @@ import Menu from './packages/menu'
 import Submenu from './packages/submenu'
 import MenuItem from './packages/menu-item'
 import MenuItemGroup from './packages/menu-item-group'
+import Tooltip from './packages/tooltip'
+import Popover from './packages/popover'
 
 const components = [
   Row,
@@ -61,7 +63,9 @@ const components = [
   Menu,
   Submenu,
   MenuItem,
-  MenuItemGroup
+  MenuItemGroup,
+  Tooltip,
+  Popover
 ]
 
 const install = function (Vue, opts = {}) {
@@ -108,6 +112,8 @@ export default {
   Submenu,
   MenuItem,
   MenuItemGroup,
+  Tooltip,
+  Popover,
   Message,
   install
 }

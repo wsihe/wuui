@@ -40,7 +40,7 @@
   }
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
   .wu-input, .wu-input-group-wrapper
     margin-bottom 10px
 </style>

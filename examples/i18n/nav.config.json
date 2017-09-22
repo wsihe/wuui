@@ -105,6 +105,14 @@
         {
           "name": "Collapse 折叠面板",
           "path": "collapse"
+        },
+        {
+          "name": "Tooltip 文字提示",
+          "path": "tooltip"
+        },
+        {
+          "name": "Popover 气泡卡片",
+          "path": "popover"
         }
       ]
     }

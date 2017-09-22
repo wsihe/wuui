@@ -17,6 +17,8 @@ import dropdown from '@/test/dropdown'
 import tabs from '@/test/tabs'
 import spin from '@/test/spin'
 import menu from '@/test/menu'
+import tooltip from '@/test/tooltip'
+import popover from '@/test/popover'
 
 Vue.use(Router)
 
@@ -106,6 +108,16 @@ const router = new Router({
         path: 'menu',
         name: 'component-menu',
         component: menu
+      },
+      {
+        path: 'tooltip',
+        name: 'component-tooltip',
+        component: tooltip
+      },
+      {
+        path: 'popover',
+        name: 'component-popover',
+        component: popover
       }]
   },
   {
