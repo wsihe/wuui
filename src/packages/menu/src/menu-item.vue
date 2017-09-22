@@ -49,7 +49,7 @@
       },
       style () {
         let paddingLeft
-        if (this.parent.mode !== 'inline') {
+        if (this.parent.mode !== 'inline' || this.parent.inlineCollapsed) {
           return
         }
         paddingLeft = this.parent.inlineIndent * this.parent.level

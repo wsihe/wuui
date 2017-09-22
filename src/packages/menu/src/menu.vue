@@ -13,7 +13,7 @@
     props: {
       mode: {
         type: String,
-        default: 'vertical'
+        default: 'inline'
       },
       theme: {
         type: String,
@@ -26,7 +26,9 @@
       selectedName: [String, Number],
       openNames: Array,
       accordion: Boolean,
-      inlineCollapsed: Boolean
+      inlineCollapsed: Boolean,
+      expand: Boolean,
+      shadow: Boolean
     },
 
     data () {
@@ -42,8 +44,11 @@
     computed: {
       menuCls () {
         return {
-          [`${prefixCls}-${this.mode}`]: !!this.mode,
-          [`${prefixCls}-${this.theme}`]: !!this.theme
+          [`${prefixCls}-root`]: !this.shadow,
+          [`${prefixCls}-vertical`]: this.inlineCollapsed,
+          [`${prefixCls}-${this.mode}`]: !!this.mode && !this.inlineCollapsed,
+          [`${prefixCls}-${this.theme}`]: !!this.theme,
+          [`${prefixCls}-inline-collapsed`]: this.inlineCollapsed
         }
       }
     },
@@ -87,7 +92,7 @@
         this.items.push(item)
       },
       initDefaultNames () {
-        if (this.inlineCollapsed) {
+        if (this.expand) {
           this.$nextTick(() => {
             this.openGroup = this.submenuNames
           })

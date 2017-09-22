@@ -1,6 +1,6 @@
 <template lang="pug">
-  .wu-menu-submenu(:class="submenuCls")
-    .wu-menu-submenu-title(ref="trigger", :style="style")
+  li.wu-menu-submenu(:class="submenuCls", @mouseenter="handleMouseenter", @mouseleave="handelMouseleave")
+    .wu-menu-submenu-title(:style="style", @click="handleClick")
       span
         slot(name="title")
     ul.wu-menu.wu-menu-sub(:class="menuCls" v-show="visible")
@@ -25,7 +25,6 @@
     data () {
       return {
         timeout: null,
-        mode: this.$parent.mode,
         isSubmenu: true,
         items: []
       }
@@ -39,16 +38,23 @@
         }
         return parent
       },
+      mode () {
+        return this.rootMenu.mode
+      },
+      inlineCollapsed () {
+        return this.rootMenu.inlineCollapsed
+      },
       submenuCls () {
         return {
-          [`${prefixCls}-${this.mode}`]: !!this.mode,
+          [`${prefixCls}-vertical`]: this.inlineCollapsed,
+          [`${prefixCls}-${this.mode}`]: !!this.mode && !this.inlineCollapsed,
           [`${prefixCls}-open`]: this.visible,
           [`${prefixCls}-selected`]: this.selected
         }
       },
       menuCls () {
         let subMode
-        if (this.mode === 'inline') {
+        if (this.mode === 'inline' && !this.inlineCollapsed) {
           subMode = this.mode
         } else {
           subMode = 'vertical'
@@ -68,7 +74,7 @@
 
       style () {
         let paddingLeft
-        if (this.mode !== 'inline') {
+        if (this.mode !== 'inline' || this.inlineCollapsed) {
           return
         }
         paddingLeft = this.inlineIndent * this.$parent.level
@@ -86,14 +92,24 @@
           if (name) selected = true
         }
         return selected
+      },
+
+      isOpen () {
+        return this.rootMenu.openGroup.indexOf(this.$parent.name) !== -1
       }
     },
 
     methods: {
       show () {
         clearTimeout(this.timeout)
+        let names = []
+        if (this.isOpen) {
+          names = [].concat(this.name, this.$parent.name)
+        } else {
+          names = [].concat(this.name)
+        }
         this.timeout = setTimeout(() => {
-          this.rootMenu.setActiveSubmenu(this.name)
+          this.rootMenu.setActiveSubmenu(names)
         }, 300)
       },
       hide () {
@@ -102,23 +118,22 @@
           this.rootMenu.removeActiveSubmenu(this.name)
         }, 300)
       },
-      initEvent () {
-        let { mode, show, hide, toggleClick } = this
-        let triggerElm = mode === 'horizontal'
-          ? this.$el
-          : this.$refs.trigger
-        if (mode === 'horizontal') {
-          triggerElm.addEventListener('mouseenter', show)
-          triggerElm.addEventListener('mouseleave', hide)
-
-          let itemElm = this.$slots.default.elm
-
-          if (!itemElm) return
-
-          itemElm.addEventListener('mouseenter', show)
-          itemElm.addEventListener('mouseleave', hide)
-        } else {
-          triggerElm.addEventListener('click', toggleClick)
+      handleMouseenter () {
+        let {mode, inlineCollapsed} = this
+        if (mode !== 'inline' || inlineCollapsed) {
+          this.show()
+        }
+      },
+      handelMouseleave () {
+        let {mode, inlineCollapsed} = this
+        if ((mode !== 'inline' || inlineCollapsed)) {
+          this.hide()
+        }
+      },
+      handleClick () {
+        let {mode, inlineCollapsed} = this
+        if (mode === 'inline' && !inlineCollapsed) {
+          this.toggleClick()
         }
       },
       toggleClick () {
@@ -132,10 +147,6 @@
 
     created () {
       this.rootMenu.addSubmenu(this)
-    },
-
-    mounted () {
-      this.initEvent()
     }
   }
 </script>
