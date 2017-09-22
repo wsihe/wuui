@@ -59,13 +59,13 @@
         this.selected = name
         this.$emit('on-click', name)
       },
-      handleClickSubmenu (submenu) {
-        if (this.accordion) {
-          this.setActiveSubmenu(
-            (this.openGroup[0] || this.openGroup[0] === 0) &&
-              this.openGroup[0] === submenu.name
-              ? '' : submenu.name
-          )
+      handleClickSubmenu (item) {
+        let {submenu, depth} = item
+        if (this.accordion && !depth) {
+          let name = (this.openGroup[0] || this.openGroup[0] === 0) &&
+          this.openGroup[0] === submenu.name
+            ? '' : submenu.name
+          this.setActiveSubmenu(name)
         } else {
           let openGroup = this.openGroup.slice(0)
           let index = openGroup.indexOf(submenu.name)

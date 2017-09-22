@@ -138,7 +138,11 @@
       },
       toggleClick () {
         if (this.disabled) return
-        this.dispatch('WuMenu', 'submenu-click', this)
+        const pram = {
+          submenu: this,
+          depth: this.isOpen
+        }
+        this.dispatch('WuMenu', 'submenu-click', pram)
       },
       addItem (item) {
         this.items.push(item)
