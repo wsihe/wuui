@@ -2,6 +2,12 @@
   .page
     h2 Tooltip
     .demo-content
+      wu-tooltip(placement="top" content="tooltip text")
+        span 鼠标经过文字提示
+    .demo-content
+      wu-tooltip
+        span(slot="content") tooltip text more
+        span 鼠标经过文字提示
 </template>
 
 <script>
