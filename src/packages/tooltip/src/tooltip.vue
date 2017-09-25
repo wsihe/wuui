@@ -1,5 +1,5 @@
 <template lang="pug">
-  .wu-tooltip-wrap
+  .wu-tooltip-wrap(v-clickoutside="handleClose")
     slot
     .wu-tooltip(:class="tooltipCls", ref="popper", v-show="showPopper")
       .wu-tooltip-content
@@ -9,6 +9,7 @@
 </template>
 
 <script>
+  import clickoutside from 'wuui/directives/clickoutside'
   import Popper from 'wuui/mixins/popper'
 
   const prefixCls = 'wu-tooltip'
@@ -16,6 +17,8 @@
     name: 'WuTooltip',
 
     componentName: 'WuTooltip',
+
+    directives: {clickoutside},
 
     mixins: [Popper],
 
@@ -31,7 +34,11 @@
       },
       openDelay: {
         type: Number,
-        default: 0
+        default: 10
+      },
+      closeDelay: {
+        type: Number,
+        default: 10
       },
       popperOptions: {
         default () {
@@ -58,17 +65,25 @@
     },
 
     methods: {
+      handleClose (e) {
+        let el = e.target
+        let popperElm = this.$refs.popper
+        if (this.trigger !== 'click' || (popperElm && popperElm.contains(el))) {
+          return false
+        }
+        this.hide()
+      },
       show () {
         clearTimeout(this.timeout)
         this.timeout = setTimeout(() => {
           this.showPopper = true
-        })
+        }, this.openDelay)
       },
       hide () {
         clearTimeout(this.timeout)
         this.timeout = setTimeout(() => {
           this.showPopper = false
-        })
+        }, this.closeDelay)
       },
       toggleClick () {
         if (this.disabled) return
