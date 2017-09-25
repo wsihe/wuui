@@ -1,7 +1,7 @@
 <template lang="pug">
   .footer-container.clearfix
     .footer-main
-      .footer-main__title Wuui
+      .footer-main__title Wuui {{version}}
       ul.footer-main__nav
         li.footer-main__item
           a(href="https://github.com/wsihe/wuui/issues" target="_blank") 反馈建议
@@ -13,9 +13,11 @@
 </template>
 
 <script>
+  import Wuui from 'wuui/index'
   export default {
     data () {
       return {
+        version: Wuui.version
       }
     }
   }
