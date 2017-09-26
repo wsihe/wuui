@@ -21,9 +21,15 @@ export default {
     }
   },
 
+  methods: {
+    handleClick (evt) {
+      this.$emit('click', evt)
+    }
+  },
+
   render (h) {
     return (
-      <i class={this.classes}></i>
+      <i class={this.classes} on-click={this.handleClick}></i>
     )
   }
 }

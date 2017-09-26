@@ -7,6 +7,8 @@
     .demo-content
       icon(type="github", class="icon-class")
       icon(type="check", class="icon-class")
+    .demo-content
+      icon(type="user", @click="handleClick")
 </template>
 
 <script>
@@ -18,6 +20,9 @@
     created () {
     },
     methods: {
+      handleClick () {
+        console.log('handleClick')
+      }
     }
   }
 </script>
