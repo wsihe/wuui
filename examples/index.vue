@@ -46,27 +46,8 @@
     margin-bottom 24px
     background  #fff
     height 100%
-    .tab__container
-      padding 0 20px
-      background #F9FAFC
-      height 32px
-      overflow hidden
-      .tab__item
-        display inline-block
-        width 150px
-        height 32px
-        color #666
-        line-height 32px
-        text-align center
-        background #b4d1ee
-        &--active
-          background #e7eef3
-        .el-icon-close
-          font-size 8px
-          font-weight 200
     .sidebar
       display block
-      border-right 1px solid #e9e9e9
     .main__container
       display block
       min-height 500px

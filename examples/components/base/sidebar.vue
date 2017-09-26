@@ -1,23 +1,36 @@
 <template lang="pug">
   .sidebar
-    .sidebar-expand
-      .sidebar__item(v-for="(menu, index) in menuList", :class="{active: menu.active}", v-cloak)
-        .sidebar__parent(@click.stop="onMenuClick(menu, index)")
-          i.icon.iconfont(:class="[menu.icon]")
-          span {{menu.name}}
-          i.iconfont.icon-expand
-        ul.menu(v-show="!menu.active")
-          li.menu__list(v-for="childMenu in menu.children")
-            router-link(active-class="active", :to='childMenu.path'  tag="span" exact) {{childMenu.name}}
-  </template>
+    .sidebar-item
+      span Wuui {{version}}
+    wu-menu(expand @on-click="onMenuClick", :inline-collapsed="collapse")
+      wu-submenu(:name="menu.icon", :key="index", v-for="(menu, index) in menuList")
+        template(slot="title")
+          i.sidebar-icon.iconfont(:class="[menu.icon]")
+          span.sidebar-title {{menu.name}}
+        wu-menu-item(:name="childMenu.path" v-for="(childMenu, index) in menu.children", :key="index") {{childMenu.name}}
+</template>
 
 <script>
+  import Wuui from 'wuui'
   import navList from '@/i18n/nav.config.json'
+
   export default {
+    props: {
+      typeName: {
+        type: String,
+        default: 'sider'
+      },
+      base: {
+        type: String,
+        default: ''
+      }
+    },
     data () {
       return {
-        show: false,
-        menuList: []
+        menuList: [],
+        activeIndex: -1,
+        version: Wuui.version,
+        collapse: false
       }
     },
     mounted () {
@@ -28,14 +41,12 @@
         if (!ret || !ret.menuItem || !ret.menuItem.length) {
           return
         }
-        var menuList = this.buildMenuTree(ret.menuItem, null)
+        var menuList = this.buildMenuTree(ret.menuItem)
         this.menuList = menuList
       },
 
-      onMenuClick (menu, index) {
-        if (!menu.leaf) {
-          menu.active = !menu.active
-        }
+      onMenuClick (menu) {
+        this.$router.push({path: menu})
       },
 
       buildMenuTree (itemList) {
@@ -61,78 +72,25 @@
 </script>
 
 <style lang="stylus" scoped>
-  @import '../../css/define';
-  @import '../../assets/fonts/iconfont.css';
+  @import '../../css/define'
+  @import '../../assets/fonts/iconfont.css'
   .sidebar
-    font-family Lato,Helvetica Neue For Number,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif;
-    .sidebar-expand
-      position relative
-      top 0
-      .sidebar__item_nav
-        position absolute
-        top 0
-        right 0
-        width 50px
-        line-height 49px
-        background #fff
-        z-index 999
-        .icon-shousuo
-          margin-left 20px
-      .sidebar__item
-        border-bottom 1px solid #EFF2F7
-      .sidebar__parent
-        position relative
-        padding 0 20px 0 15px
-        color rgba(0,0,0,.65)
-        font-size 14px
-        height 50px
-        line-height 50px
-        as-button()
-        background #fff
-        .icon
-          margin-right 18px
-          display inline-block
-        .icon-expand
-          position absolute
-          right 15px
-          top 0
-          opacity .5
-      .sidebar__item.active
-        .sidebar__parent
-          background $color_white
-          .icon-expand
-            -moz-transform scaleY(-1)
-            -webkit-transform scaleY(-1)
-            -o-transform scaleY(-1)
-            transform scaleY(-1)
-            filter FlipV
-      .menu
-        background #fff
-        &__list
-          position relative
-          overflow hidden
-          span
-            display inline-block
-            width 100%
-            padding-left 50px
-            font-size 14px
-            color rgba(0,0,0,.65)
-            height 40px
-            line-height 40px
-            white-space nowrap
-            as-button()
-            text-overflow ellipsis
-            overflow hidden
-            &:hover, &.active
-              color #2f92d1
-              &::before
-                position absolute
-                content ""
-                width 6px
-                height 6px
-                border 1px solid #2f92d1
-                border-radius 100%
-                left 34px
-                bottom 21px
-                background #2f92d1
+    &-item
+      padding-left 44px
+      color rgba(0,0,0,.65)
+      font-size 14px
+      height 50px
+      line-height 50px
+      border-right 1px solid #EFF2F7
+      border-bottom 1px solid #EFF2F7
+      as-button()
+    &-item &-item-icon
+      float right
+      width 50px
+      text-align center
+    &-icon
+      font-size 13px
+      margin-right 8px
+    &-title
+      font-size 13px
 </style>
