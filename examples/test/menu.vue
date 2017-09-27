@@ -13,11 +13,11 @@
           wu-menu-item(name="4") Navigation sub Two
         wu-submenu(name="sub2")
           template(slot="title")  Navigation Four
-          wu-item-group
+          wu-menu-item-group
             template(slot="title") item 1
             wu-menu-item(name="5") Navigation sub One
             wu-menu-item(name="6") Navigation sub Two
-          wu-item-group
+          wu-menu-item-group
             template(slot="title") item 2
             wu-menu-item(name="7") Navigation sub One
             wu-menu-item(name="8") Navigation sub Two
@@ -32,11 +32,11 @@
           template(slot="title")
             icon(type="appstore")
             | Navigation One
-          wu-item-group
+          wu-menu-item-group
             template(slot="title") item 1
             wu-menu-item(name="1") Option 1
             wu-menu-item(name="2") Option 2
-          wu-item-group
+          wu-menu-item-group
             template(slot="title") item 2
             wu-menu-item(name="3") Option 3
             wu-menu-item(name="4") Option 4
@@ -68,11 +68,11 @@
           template(slot="title")
             icon(type="appstore")
             span Navigation One
-          wu-item-group
+          wu-menu-item-group
             template(slot="title") item 1
             wu-menu-item(name="1") Option 1
             wu-menu-item(name="2") Option 2
-          wu-item-group
+          wu-menu-item-group
             template(slot="title") item 2
             wu-menu-item(name="3") Option 3
             wu-menu-item(name="4") Option 4
@@ -103,11 +103,11 @@
           template(slot="title")
             icon(type="appstore")
             | Navigation One
-          wu-item-group
+          wu-menu-item-group
             template(slot="title") item 1
             wu-menu-item(name="1") Option 1
             wu-menu-item(name="2") Option 2
-          wu-item-group
+          wu-menu-item-group
             template(slot="title") item 2
             wu-menu-item(name="3") Option 3
             wu-menu-item(name="4") Option 4
@@ -138,11 +138,11 @@
           template(slot="title")
             icon(type="appstore")
             span Navigation One
-          wu-item-group
+          wu-menu-item-group
             template(slot="title") item 1
             wu-menu-item(name="1") Option 1
             wu-menu-item(name="2") Option 2
-          wu-item-group
+          wu-menu-item-group
             template(slot="title") item 2
             wu-menu-item(name="3") Option 3
             wu-menu-item(name="4") Option 4
