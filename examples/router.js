@@ -19,6 +19,7 @@ import spin from '@/test/spin'
 import menu from '@/test/menu'
 import tooltip from '@/test/tooltip'
 import popover from '@/test/popover'
+import popconfirm from '@/test/popconfirm'
 
 Vue.use(Router)
 
@@ -118,6 +119,11 @@ const router = new Router({
         path: 'popover',
         name: 'component-popover',
         component: popover
+      },
+      {
+        path: 'popconfirm',
+        name: 'component-popconfirm',
+        component: popconfirm
       }]
   },
   {
