@@ -1,7 +1,7 @@
 <template lang="pug">
   .wu-popover-wrap(v-clickoutside="handleClose")
     slot
-    .wu-popover(:class="tooltipCls", ref="popper", v-show="showPopper")
+    .wu-popover(ref="popper", v-show="showPopper")
       .wu-popover-content
         .wu-popover-arrow
         .wu-popover-inner
@@ -16,7 +16,7 @@
   import clickoutside from 'wuui/directives/clickoutside'
   import Popper from 'wuui/mixins/popper'
 
-  const prefixCls = 'wu-popover'
+//  const prefixCls = 'wu-popover'
   export default {
     name: 'WuPopover',
 
@@ -59,14 +59,6 @@
     data () {
       return {
         timeout: null
-      }
-    },
-
-    computed: {
-      tooltipCls () {
-        return {
-          [`${prefixCls}-placement-${this.placement}`]: !!this.placement
-        }
       }
     },
 

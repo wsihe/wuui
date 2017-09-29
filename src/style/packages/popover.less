@@ -27,28 +27,27 @@
     display: none;
   }
 
-  // Offset the popover to account for the popover arrow
-  &-placement-top,
-  &-placement-top-start,
-  &-placement-top-end {
+  &[x-placement^=top],
+  &[x-placement^=top-start],
+  &[x-placement^=top-end] {
     padding-bottom: @popover-distance;
   }
 
-  &-placement-right,
-  &-placement-right-start,
-  &-placement-right-end {
+  &[x-placement^=right],
+  &[x-placement^=right-start],
+  &[x-placement^=right-end] {
     padding-left: @popover-distance;
   }
 
-  &-placement-bottom,
-  &-placement-bottom-start,
-  &-placement-bottom-end {
+  &[x-placement^=bottom],
+  &[x-placement^=bottom-start],
+  &[x-placement^=bottom-end] {
     padding-top: @popover-distance;
   }
 
-  &-placement-left,
-  &-placement-left-start,
-  &-placement-left-end {
+  &[x-placement^=left],
+  &[x-placement^=left-start],
+  &[x-placement^=left-end] {
     padding-right: @popover-distance;
   }
 
@@ -118,9 +117,9 @@
     content: "";
   }
 
-  &-placement-top > &-content > &-arrow,
-  &-placement-top-start > &-content >  &-arrow,
-  &-placement-top-end > &-content >  &-arrow {
+  &[x-placement^=top] > &-content > &-arrow,
+  &[x-placement^=top-start] > &-content >  &-arrow,
+  &[x-placement^=top-end] > &-content >  &-arrow {
     border-bottom-width: 0;
     border-top-color: @popover-arrow-outer-color;
     bottom: @popover-distance - @popover-arrow-outer-width;
@@ -132,20 +131,20 @@
       border-top-color: @popover-arrow-color;
     }
   }
-  &-placement-top > &-content >  &-arrow {
+  &[x-placement^=top] > &-content >  &-arrow {
     left: 50%;
     margin-left: -@popover-arrow-outer-width;
   }
-  &-placement-top-start > &-content >  &-arrow {
+  &[x-placement^=top-start] > &-content >  &-arrow {
     left: 16px;
   }
-  &-placement-top-end > &-content >  &-arrow {
+  &[x-placement^=top-end] > &-content >  &-arrow {
     right: 16px;
   }
 
-  &-placement-right > &-content >  &-arrow,
-  &-placement-right-start > &-content >  &-arrow,
-  &-placement-right-end > &-content >  &-arrow {
+  &[x-placement^=right] > &-content >  &-arrow,
+  &[x-placement^=right-start] > &-content >  &-arrow,
+  &[x-placement^=right-end] > &-content >  &-arrow {
     left: @popover-distance - @popover-arrow-outer-width;
     border-left-width: 0;
     border-right-color: @popover-arrow-outer-color;
@@ -157,20 +156,20 @@
       border-right-color: @popover-arrow-color;
     }
   }
-  &-placement-right > &-content >  &-arrow {
+  &[x-placement^=right] > &-content >  &-arrow {
     top: 50%;
     margin-top: -@popover-arrow-outer-width;
   }
-  &-placement-right-start > &-content >  &-arrow {
+  &[x-placement^=right-start] > &-content >  &-arrow {
     top: 12px;
   }
-  &-placement-right-end > &-content >  &-arrow {
+  &[x-placement^=right-end] > &-content >  &-arrow {
     bottom: 12px;
   }
 
-  &-placement-bottom > &-content >  &-arrow,
-  &-placement-bottom-start > &-content >  &-arrow,
-  &-placement-bottom-end > &-content >  &-arrow {
+  &[x-placement^=bottom] > &-content >  &-arrow,
+  &[x-placement^=bottom-start] > &-content >  &-arrow,
+  &[x-placement^=bottom-end] > &-content >  &-arrow {
     border-top-width: 0;
     border-bottom-color: @popover-arrow-outer-color;
     top: @popover-distance - @popover-arrow-outer-width;
@@ -182,20 +181,20 @@
       border-bottom-color: @popover-arrow-color;
     }
   }
-  &-placement-bottom > &-content >  &-arrow {
+  &[x-placement^=bottom] > &-content >  &-arrow {
     left: 50%;
     margin-left: -@popover-arrow-outer-width;
   }
-  &-placement-bottom-start > &-content >  &-arrow {
+  &[x-placement^=bottom-start] > &-content >  &-arrow {
     left: 16px;
   }
-  &-placement-bottom-end > &-content >  &-arrow {
+  &[x-placement^=bottom-end] > &-content >  &-arrow {
     right: 16px;
   }
 
-  &-placement-left > &-content >  &-arrow,
-  &-placement-left-start > &-content >  &-arrow,
-  &-placement-left-end > &-content >  &-arrow {
+  &[x-placement^=left] > &-content >  &-arrow,
+  &[x-placement^=left-start] > &-content >  &-arrow,
+  &[x-placement^=left-end] > &-content >  &-arrow {
     right: @popover-distance - @popover-arrow-outer-width;
     border-right-width: 0;
     border-left-color: @popover-arrow-outer-color;
@@ -207,14 +206,14 @@
       bottom: -@popover-arrow-width;
     }
   }
-  &-placement-left > &-content >  &-arrow {
+  &[x-placement^=left] > &-content >  &-arrow {
     top: 50%;
     margin-top: -@popover-arrow-outer-width;
   }
-  &-placement-left-start > &-content >  &-arrow {
+  &[x-placement^=left-start] > &-content >  &-arrow {
     top: 12px;
   }
-  &-placement-left-end > &-content >  &-arrow {
+  &[x-placement^=left-end] > &-content >  &-arrow {
     bottom: 12px;
   }
 }
