@@ -1,7 +1,7 @@
 <template lang="pug">
   .wu-tooltip-wrap(v-clickoutside="handleClose")
     slot
-    .wu-tooltip(:class="tooltipCls", ref="popper", v-show="showPopper")
+    .wu-tooltip(ref="popper", v-show="showPopper")
       .wu-tooltip-content
         .wu-tooltip-arrow
         .wu-tooltip-inner
@@ -12,7 +12,6 @@
   import clickoutside from 'wuui/directives/clickoutside'
   import Popper from 'wuui/mixins/popper'
 
-  const prefixCls = 'wu-tooltip'
   export default {
     name: 'WuTooltip',
 
@@ -53,14 +52,6 @@
     data () {
       return {
         timeout: null
-      }
-    },
-
-    computed: {
-      tooltipCls () {
-        return {
-          [`${prefixCls}-placement-${this.placement}`]: !!this.placement
-        }
       }
     },
 
