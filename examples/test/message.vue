@@ -41,7 +41,7 @@
   }
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
   .wu-btn
     width 100px
 </style>

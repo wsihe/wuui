@@ -46,7 +46,7 @@
   }
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
   .wu-switch
     margin-right 30px
 </style>

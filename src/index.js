@@ -32,6 +32,7 @@ import MenuItem from './packages/menu-item'
 import MenuItemGroup from './packages/menu-item-group'
 import Tooltip from './packages/tooltip'
 import Popover from './packages/popover'
+import Popconfirm from './packages/popconfirm'
 
 const components = [
   Row,
@@ -65,7 +66,8 @@ const components = [
   MenuItem,
   MenuItemGroup,
   Tooltip,
-  Popover
+  Popover,
+  Popconfirm
 ]
 
 const install = function (Vue, opts = {}) {
@@ -114,6 +116,7 @@ export default {
   MenuItemGroup,
   Tooltip,
   Popover,
+  Popconfirm,
   Message,
   install
 }

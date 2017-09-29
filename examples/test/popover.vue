@@ -24,4 +24,4 @@
     methods: {
     }
   }
-</script>x
+</script>

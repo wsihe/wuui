@@ -5,10 +5,11 @@
       .wu-popover-content
         .wu-popover-arrow
         .wu-popover-inner
-          div
+          div(v-if="!$slots.confirm")
             .wu-popover-title {{title}}
             .wu-popover-inner-content
               slot(name="content") {{content}}
+          slot(name="confirm" v-if="$slots.confirm")
 </template>
 
 <script>
@@ -44,6 +45,7 @@
         type: Number,
         default: 10
       },
+      disabled: Boolean,
       popperOptions: {
         default () {
           return {
