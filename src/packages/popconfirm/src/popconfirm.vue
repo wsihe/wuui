@@ -41,7 +41,7 @@
       title: String,
       okText: {
         type: String,
-        default: '删除'
+        default: '确认'
       },
       cancelText: {
         type: String,
