@@ -4,11 +4,11 @@
 </template>
 
 <script>
-//  const prefixCls = 'wu-modal'
+  //  const prefixCls = 'wu-modal'
   export default {
-    name: 'WuModal',
+    name: '',
 
-    componentName: 'WuModal',
+    componentName: '',
 
     props: {
     },

@@ -1,3 +1,3 @@
-import Menu from './src/menu.vue'
+import Modal from './src/modal.vue'
 
-export default Menu
+export default Modal
