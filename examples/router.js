@@ -21,6 +21,7 @@ import tooltip from '@/test/tooltip'
 import popover from '@/test/popover'
 import popconfirm from '@/test/popconfirm'
 import timePicker from '@/test/timePicker'
+import datePicker from '@/test/datePicker'
 
 Vue.use(Router)
 
@@ -130,6 +131,11 @@ const router = new Router({
         path: 'timePicker',
         name: 'component-timePicker',
         component: timePicker
+      },
+      {
+        path: 'datePicker',
+        name: 'component-DatePicker',
+        component: datePicker
       }]
   },
   {

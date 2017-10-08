@@ -62,8 +62,12 @@
           "path": "pagination"
         },
         {
-          "name": "timePicker 时间选择框",
+          "name": "TimePicker 时间选择框",
           "path": "timePicker"
+        },
+        {
+          "name": "DatePicker 日期选择框",
+          "path": "datePicker"
         }
       ]
     },
