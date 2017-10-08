@@ -60,6 +60,10 @@
         {
           "name": "Pagination 分页",
           "path": "pagination"
+        },
+        {
+          "name": "timePicker 时间选择框",
+          "path": "timePicker"
         }
       ]
     },

@@ -20,6 +20,7 @@ import menu from '@/test/menu'
 import tooltip from '@/test/tooltip'
 import popover from '@/test/popover'
 import popconfirm from '@/test/popconfirm'
+import timePicker from '@/test/timePicker'
 
 Vue.use(Router)
 
@@ -124,6 +125,11 @@ const router = new Router({
         path: 'popconfirm',
         name: 'component-popconfirm',
         component: popconfirm
+      },
+      {
+        path: 'timePicker',
+        name: 'component-timePicker',
+        component: timePicker
       }]
   },
   {
