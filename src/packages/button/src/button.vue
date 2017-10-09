@@ -46,7 +46,7 @@ export default {
         [`${prefixCls}-${this.type}`]: this.type,
         [`${prefixCls}-${this.shape}`]: this.shape,
         [`${prefixCls}-${sizeCls}`]: sizeCls,
-        [`${prefixCls}-icon-only`]: !this.icon && !this.loading,
+        [`${prefixCls}-icon-only`]: this.icon && !this.loading,
         [`${prefixCls}-loading`]: this.loading,
         [`${prefixCls}-background-ghost`]: this.ghost
       }
