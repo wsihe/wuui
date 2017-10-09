@@ -4,16 +4,16 @@
     .wu-modal-wrap(@click="handleWrapClick")
       .wu-modal(:style="modalStyle")
         .wu-modal-content
-          button.wu-modal-close(@click="visible = false")
+          button.wu-modal-close(@click="handleCancelClick")
             span.wu-modal-close-x
           .wu-modal-header
             .wu-modal-title {{title}}
           .wu-modal-body
             slot
-          .wu-modal-footer
+          .wu-modal-footer(v-if="!hideFooter")
             slot(name="footer")
               wu-button(size="large", @click="handleCancelClick") {{cancelText}}
-              wu-button(type="primary", size="large", @click="handleOkClick") {{okText}}
+              wu-button(type="primary", size="large", @click="handleOkClick", :loading="buttonLoading && confirmLoading") {{okText}}
 </template>
 
 <script>
@@ -46,12 +46,18 @@
       maskClosable: {
         type: Boolean,
         default: true
+      },
+      confirmLoading: Boolean,
+      hideFooter: {
+        type: Boolean,
+        default: false
       }
     },
 
     data () {
       return {
-        visible: this.value
+        visible: this.value,
+        buttonLoading: false
       }
     },
 
@@ -61,6 +67,9 @@
       },
       visible (val) {
         this.$emit('input', val)
+        if (!val) {
+          this.buttonLoading = false
+        }
       }
     },
 
@@ -84,7 +93,11 @@
         }
       },
       handleOkClick () {
-        this.visible = false
+        if (this.confirmLoading) {
+          this.buttonLoading = true
+        } else {
+          this.visible = false
+        }
         this.$emit('on-ok')
       },
       handleCancelClick () {
@@ -92,7 +105,10 @@
         this.$emit('on-cancel')
       },
       closeModal () {
-        if (this.maskClosable) this.visible = false
+        if (this.maskClosable) {
+          this.visible = false
+          this.$emit('on-cancel')
+        }
       }
     }
   }
