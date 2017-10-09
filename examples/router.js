@@ -22,6 +22,7 @@ import popover from '@/test/popover'
 import popconfirm from '@/test/popconfirm'
 import timePicker from '@/test/timePicker'
 import datePicker from '@/test/datePicker'
+import modal from '@/test/modal'
 
 Vue.use(Router)
 
@@ -136,6 +137,11 @@ const router = new Router({
         path: 'datePicker',
         name: 'component-DatePicker',
         component: datePicker
+      },
+      {
+        path: 'modal',
+        name: 'component-modal',
+        component: modal
       }]
   },
   {

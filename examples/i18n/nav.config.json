@@ -81,6 +81,10 @@
           "path": "message"
         },
         {
+          "name": "Modal 对话框",
+          "path": "modal"
+        },
+        {
           "name": "Spin 加载中",
           "path": "spin"
         }
