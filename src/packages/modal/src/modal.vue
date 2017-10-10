@@ -2,7 +2,7 @@
   div(v-show="visible")
     .wu-modal-mask
     .wu-modal-wrap(@click="handleWrapClick")
-      .wu-modal(:style="modalStyle")
+      .wu-modal(:class="modalClass", :style="modalStyle")
         .wu-modal-content
           button.wu-modal-close(@click="handleCancelClick")
             span.wu-modal-close-x
@@ -21,6 +21,7 @@
 //  const prefixCls = 'wu-modal'
   export default {
     components: {WuButton},
+
     name: 'WuModal',
 
     componentName: 'WuModal',
@@ -51,7 +52,8 @@
       hideFooter: {
         type: Boolean,
         default: false
-      }
+      },
+      modalClass: [String, Array]
     },
 
     data () {

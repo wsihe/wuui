@@ -78,6 +78,7 @@ const install = function (Vue, opts = {}) {
     Vue.component(component.name, component)
   })
   Vue.prototype.$message = Message
+  Vue.prototype.$modal = Modal
 }
 
 if (typeof window !== 'undefined' && window.Vue) {

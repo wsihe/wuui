@@ -28,6 +28,13 @@
         template(slot="footer")
           wu-button(size="large", @click="handleCancelClick") 取消1
           wu-button(type="primary", size="large", @click="handleOkClick", :loading="buttonLoading") 确定1
+    .demo-content
+      wu-button(@click="handleInstance") 实例方法confirm
+    .demo-content
+      wu-button(@click="instance('info')") Info
+      wu-button(@click="instance('success')") Success
+      wu-button(@click="instance('error')") Error
+      wu-button(@click="instance('warning')") Warning
 </template>
 
 <script>
@@ -62,6 +69,42 @@
           this.modalVisible3 = false
           this.buttonLoading = false
         }, 2000)
+      },
+      handleInstance () {
+        this.$modal.confirm({
+          title: '提示',
+          content: '功能描述'
+        })
+      },
+      instance (type) {
+        const title = '标题'
+        const content = '内容'
+        switch (type) {
+          case 'info':
+            this.$modal.info({
+              title: title,
+              content: content
+            })
+            break
+          case 'success':
+            this.$modal.success({
+              title: title,
+              content: content
+            })
+            break
+          case 'warning':
+            this.$modal.warning({
+              title: title,
+              content: content
+            })
+            break
+          case 'error':
+            this.$modal.error({
+              title: title,
+              content: content
+            })
+            break
+        }
       }
     }
   }

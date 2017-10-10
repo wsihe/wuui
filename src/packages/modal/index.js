@@ -1,3 +1,3 @@
-import Modal from './src/modal.vue'
+import Modal from './src/confirm.js'
 
 export default Modal
