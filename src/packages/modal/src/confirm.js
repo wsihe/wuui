@@ -55,9 +55,11 @@ Modal.newInstance = (options) => {
     },
     methods: {
       handleCancelClick () {
+        this.onCancel()
         this.remove()
       },
       handleOkClick () {
+        this.onOk()
         this.remove()
       },
       remove () {
@@ -66,23 +68,15 @@ Modal.newInstance = (options) => {
           document.body.removeChild(this.$el)
           modalInstance = null
         }, 100)
-      }
+      },
+      onOk () {},
+      onCancel () {}
     }
   })
 
   instance.vm = instance.$mount()
   document.body.appendChild(instance.vm.$el)
-  const modal = instance.vm
-
-  return {
-    show (options) {
-      modal.title = options.title
-      modal.type = options.type
-      modal.content = options.content
-      modal.showCancel = options.showCancel
-      modal.visible = true
-    }
-  }
+  return instance.vm
 }
 
 ['confirm', 'success', 'warning', 'info', 'error'].forEach(type => {
@@ -99,8 +93,8 @@ Modal.newInstance = (options) => {
 const confirm = function (options) {
   const render = ('render' in options) ? options.render : undefined
   let instance = getModalInstance(render)
-
-  instance.show(options)
+  instance = Object.assign(instance, options)
+  instance.visible = true
 }
 
 const getModalInstance = function (render = undefined) {

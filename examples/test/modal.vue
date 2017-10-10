@@ -35,6 +35,8 @@
       wu-button(@click="instance('success')") Success
       wu-button(@click="instance('error')") Error
       wu-button(@click="instance('warning')") Warning
+    .demo-content
+      wu-button(@click="handleInstance1") onCancel/onOk
 </template>
 
 <script>
@@ -74,6 +76,18 @@
         this.$modal.confirm({
           title: '提示',
           content: '功能描述'
+        })
+      },
+      handleInstance1 () {
+        this.$modal.confirm({
+          title: '提示',
+          content: '功能描述',
+          onOk () {
+            console.log('onOk')
+          },
+          onCancel () {
+            console.log('onCancel')
+          }
         })
       },
       instance (type) {
