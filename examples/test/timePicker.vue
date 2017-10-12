@@ -2,6 +2,7 @@
   .page
     h2 TimePicker
     .demo-content
+      wu-time-picker
 </template>
 
 <script>

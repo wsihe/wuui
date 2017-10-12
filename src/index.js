@@ -34,6 +34,7 @@ import Tooltip from './packages/tooltip'
 import Popover from './packages/popover'
 import Popconfirm from './packages/popconfirm'
 import Modal from './packages/modal'
+import TimePicker from './packages/time-picker'
 
 const components = [
   Row,
@@ -69,7 +70,8 @@ const components = [
   Tooltip,
   Popover,
   Popconfirm,
-  Modal
+  Modal,
+  TimePicker
 ]
 
 const install = function (Vue, opts = {}) {
@@ -121,6 +123,7 @@ export default {
   Popover,
   Popconfirm,
   Modal,
+  TimePicker,
   Message,
   install
 }

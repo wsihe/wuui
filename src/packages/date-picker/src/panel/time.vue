@@ -1,14 +1,17 @@
 <template lang="pug">
-  div
-    slot
+  .wu-time-picker-panel
+    time-spinner
 </template>
 
 <script>
+  import TimeSpinner from '../basic/time-spinner.vue'
   //  const prefixCls = 'wu-modal'
   export default {
     name: '',
 
     componentName: '',
+
+    components: { TimeSpinner },
 
     props: {
     },
