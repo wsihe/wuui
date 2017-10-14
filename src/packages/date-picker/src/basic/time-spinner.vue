@@ -1,60 +1,75 @@
 <template lang="pug">
   .wu-time-picker-panel-inner
+    .wu-time-picker-panel-input-wrap
+      input.wu-time-picker-panel-input()
+      .wu-time-picker-panel-clear-btn(title="clear")
     .wu-time-picker-panel-combobox
-      .wu-time-picker-panel-select(ref="hours1")
-        ul
-          li(v-for="hour in hourOptions", @click="scrollToSelected(hour,120)", ref="hours") {{hour}}
-      .wu-time-picker-panel-select
-        ul
-          li.wu-time-picker-panel-select-option-selected 00
-          li(v-for="minute in minuteOptions") {{minute}}
-      .wu-time-picker-panel-select
-        ul
-          li.wu-time-picker-panel-select-option-selected 00
-          li(v-for="second in secondOptions") {{second}}
+      time-select(:options="hourOptions" v-model="hour")
+      time-select(:options="minuteOptions" v-model="minute")
+      time-select(:options="secondOptions"  v-model="second")
 </template>
 
 <script>
+  import moment from 'moment'
+  import TimeSelect from './time-select.vue'
+
+  const formatOption = (option, disabledOptions) => {
+    let value = `${option}`
+    if (option < 10) {
+      value = `0${option}`
+    }
+    let disabled = false
+    if (disabledOptions && disabledOptions.indexOf(option) >= 0) {
+      disabled = true
+    }
+    return {
+      value,
+      disabled
+    }
+  }
+
   const generateOptions = function (length, disabledOptions, hideDisabledOptions) {
     const arr = []
     for (let value = 0; value < length; value++) {
       if (!disabledOptions || disabledOptions.indexOf(value) < 0 || !hideDisabledOptions) {
-        arr.push(value)
+        let option = formatOption(value, disabledOptions)
+        arr.push(option)
       }
     }
     return arr
   }
 
-  const scrollTo = (element, to, duration) => {
-    const requestAnimationFrame = window.requestAnimationFrame ||
-      function requestAnimationFrameTimeout () {
-        return setTimeout(arguments[0], 10)
-      }
-    // jump to target if duration zero
-    if (duration <= 0) {
-      element.scrollTop = to
-      return
-    }
-    const difference = to - element.scrollTop
-    const perTick = difference / duration * 10
-
-    requestAnimationFrame(() => {
-      element.scrollTop = element.scrollTop + perTick
-      if (element.scrollTop === to) return
-      scrollTo(element, to, duration - 10)
-    })
-  }
-
   export default {
 
+    components: { TimeSelect },
+
     props: {
+      showHour: {
+        type: Boolean,
+        default: true
+      },
+      showMinute: {
+        type: Boolean,
+        default: true
+      },
+      showSecond: {
+        type: Boolean,
+        default: true
+      },
+      format: {
+        type: Function
+      }
     },
 
     data () {
       return {
+        defaultValue: moment(),
         hourOptions: [],
         minuteOptions: [],
-        secondOptions: []
+        secondOptions: [],
+        hour: '01',
+        minute: '20',
+        second: '30'
       }
     },
 
@@ -76,6 +91,19 @@
         const topOption = list[index]
         const to = topOption.offsetTop
         scrollTo(select, to, duration)
+      },
+
+      getFormat () {
+        const {format, showHour, showMinute, showSecond} = this
+        if (format) {
+          return format
+        }
+
+        return [
+          showHour ? 'HH' : '',
+          showMinute ? 'mm' : '',
+          showSecond ? 'ss' : ''
+        ].filter(item => !!item).join(':')
       }
     },
 

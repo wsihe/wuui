@@ -1,5 +1,5 @@
 <template lang="pug">
-  .wu-time-picker-panel
+  .wu-time-picker-panel(:style="{marginTop:'-30px'}")
     time-spinner
 </template>
 

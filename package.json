@@ -26,6 +26,7 @@
   "license": "MIT",
   "dependencies": {
     "lodash.debounce": "^4.0.8",
+    "moment": "^2.19.1",
     "popper.js": "^0.6.4",
     "vue": "^2.2.2"
   },
