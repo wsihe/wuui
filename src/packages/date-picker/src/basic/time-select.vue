@@ -1,7 +1,7 @@
 <template lang="pug">
   .wu-time-picker-panel-select(ref="select")
     ul
-      li(:class="optionCls(time)", v-for="(time, index) in options", @click="handleClick(time)", ref="times") {{time.value}}
+      li(:class="optionCls(time)", v-for="(time, index) in options", @click="handleClick(time)", ref="times") {{time.value | capitalize}}
 </template>
 
 <script>
@@ -32,14 +32,24 @@
     props: {
       options: Array,
       value: {
-        type: String,
-        default: '00'
+        type: [ Number ],
+        default: 0
       }
     },
 
     data () {
       return {
         selectedIndex: this.value
+      }
+    },
+
+    filters: {
+      capitalize: function (value) {
+        let option = `${value}`
+        if (value < 10) {
+          option = `0${option}`
+        }
+        return option
       }
     },
 

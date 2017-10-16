@@ -1,7 +1,7 @@
 <template lang="pug">
   .wu-time-picker-panel-inner
     .wu-time-picker-panel-input-wrap
-      input.wu-time-picker-panel-input()
+      input.wu-time-picker-panel-input(v-model="defaultOpenValue")
       .wu-time-picker-panel-clear-btn(title="clear")
     .wu-time-picker-panel-combobox
       time-select(:options="hourOptions" v-model="hour")
@@ -14,10 +14,10 @@
   import TimeSelect from './time-select.vue'
 
   const formatOption = (option, disabledOptions) => {
-    let value = `${option}`
-    if (option < 10) {
-      value = `0${option}`
-    }
+    let value = option
+//    if (option < 10) {
+//      value = `0${option}`
+//    }
     let disabled = false
     if (disabledOptions && disabledOptions.indexOf(option) >= 0) {
       disabled = true
@@ -39,11 +39,14 @@
     return arr
   }
 
+  const defaultOpenValue = moment()
+
   export default {
 
     components: { TimeSelect },
 
     props: {
+      value: Object,
       showHour: {
         type: Boolean,
         default: true
@@ -63,13 +66,14 @@
 
     data () {
       return {
-        defaultValue: moment(),
+        defaultOpenValue: moment(),
+//        defaultValue: this.value || this.defaultOpenValue,
         hourOptions: [],
         minuteOptions: [],
         secondOptions: [],
-        hour: '01',
-        minute: '20',
-        second: '30'
+        hour: defaultOpenValue.hour(),
+        minute: defaultOpenValue.minute(),
+        second: defaultOpenValue.second()
       }
     },
 
@@ -77,22 +81,6 @@
     },
 
     methods: {
-      scrollToSelected (item, duration) {
-        // move to selected item
-        const select = this.$refs.hours1
-        const list = this.$refs.hours
-        if (!list) {
-          return
-        }
-        let index = this.hourOptions.find(obj => item === obj)
-        if (index < 0) {
-          index = 0
-        }
-        const topOption = list[index]
-        const to = topOption.offsetTop
-        scrollTo(select, to, duration)
-      },
-
       getFormat () {
         const {format, showHour, showMinute, showSecond} = this
         if (format) {
