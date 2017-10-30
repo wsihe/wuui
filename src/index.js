@@ -35,6 +35,7 @@ import Popover from './packages/popover'
 import Popconfirm from './packages/popconfirm'
 import Modal from './packages/modal'
 import TimePicker from './packages/time-picker'
+import LoadingBar from './packages/loading-bar'
 
 const components = [
   Row,
@@ -71,7 +72,8 @@ const components = [
   Popover,
   Popconfirm,
   Modal,
-  TimePicker
+  TimePicker,
+  LoadingBar
 ]
 
 const install = function (Vue, opts = {}) {

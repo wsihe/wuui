@@ -1,3 +1,3 @@
-import Menu from './src/menu.vue'
+import Loading from './src/loading.vue'
 
-export default Menu
+export default Loading
