@@ -65,7 +65,10 @@
         }
         if (this.type === 'line') style.display = 'block'
         if (this.animated) {
-          style.transform = `translate3d(${this.barOffset}px, 0px, 0px)`
+          const transform = `translateX(${this.barOffset}px)`
+          style.transform = transform
+          style.msTransform = transform
+          style.webkitTransform = transform
         } else {
           style.left = `${this.barOffset}px`
         }

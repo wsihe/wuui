@@ -10,14 +10,14 @@
   color: @text-color;
 
   &-ink-bar {
-    z-index: 1;
     position: absolute;
-    left: 0;
     bottom: 1px;
-    box-sizing: border-box;
+    left: 0;
     height: 2px;
     background-color: @primary-color;
-    transform-origin: 0 0;
+    z-index: 1;
+    transition: transform .3s cubic-bezier(.645,.045,.355,1);
+    list-style: none;
   }
 
   &-bar {

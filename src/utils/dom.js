@@ -1,7 +1,9 @@
+/* eslint-disable no-useless-escape */
 /* istanbul ignore next */
 
 import Vue from 'vue'
 
+// eslint-disable-next-line no-useless-escape
 const isServer = Vue.prototype.$isServer
 const SPECIAL_CHARS_REGEXP = /([\:\-\_]+(.))/g
 const MOZ_HACK_REGEXP = /^moz([A-Z])/
