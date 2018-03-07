@@ -6,7 +6,9 @@
           .wu-tabs-nav-scroll
             .wu-tabs-nav(ref="nav")
               .wu-tabs-ink-bar(:class="inkClass", :style="inkStyle")
-              .wu-tabs-tab(:class="navClass(nav)", v-for="nav in panes", @click="handleTabClick(nav,nav.name)") {{nav.tab}}
+              .wu-tabs-tab(:class="navClass(nav)", v-for="nav in panes", @click="handleTabClick(nav,nav.name)")
+                span {{nav.tab}}
+                icon(v-if="nav.icon", :type="nav.icon")
     .wu-tabs-content(:class="contentClasses")
       slot
 </template>
