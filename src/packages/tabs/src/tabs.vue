@@ -98,8 +98,34 @@
           [`${prefixCls}-tab-active`]: item.name === this.activeKey
         }
       },
-      addPanes (item) {
-        this.panes.push(item)
+      getTabs () {
+        return this.$children.filter(item => item.$options.name === 'GfTabPane')
+      },
+      updateNav () {
+        this.panes = []
+        this.getTabs().forEach((pane, index) => {
+          this.panes.push({
+            isAfter: pane.isAfter,
+            label: pane.label,
+            icon: pane.icon || '',
+            name: pane.currentName || index,
+            disabled: pane.disabled,
+            closable: pane.closable
+          })
+          if (!pane.currentName) pane.currentName = index
+          if (index === 0) {
+            if (!this.activeKey) this.activeKey = pane.currentName || index
+          }
+        })
+        this.updateStatus()
+        this.updateInk()
+      },
+
+      updateStatus () {
+        const tabs = this.getTabs()
+        tabs.forEach((tab) => {
+          tab.show = (tab.currentName === this.activeKey)
+        })
       },
 
       handleTabClick (tab, navName) {
